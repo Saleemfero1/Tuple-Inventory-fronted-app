@@ -99,7 +99,7 @@ export default function Orders() {
         </TableBody>
         <TableFooter>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+            rowsPerPageOptions={[5, 10, 25, 50, { label: "All", value: -1 }]}
             colSpan={12}
             count={dashData.length}
             rowsPerPage={rowsPerPage}

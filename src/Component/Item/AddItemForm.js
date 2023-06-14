@@ -136,7 +136,7 @@ export default function AddItemForm() {
 
   return (
     <div className="container mt-5">
-      <ToastContainer position="bottom-center" />
+      <ToastContainer position="bottom-left" />
       <form className="mt-3 p-3 shadow addItems" onSubmit={saveItem}>
         <div className=" row mb-3">
           <div className="form-group col-md-6">
@@ -271,7 +271,7 @@ export default function AddItemForm() {
 
         <Button
           variant="contained"
-          color="success"
+          className="bg-info text-black"
           type="submit"
           sx={{ mt: 2 }}
         >

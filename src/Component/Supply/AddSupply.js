@@ -59,9 +59,7 @@ export default function AddSupply() {
           });
         })
         .catch((err) => {
-          toast.error(err.response.data.message, {
-            onClose: () => navigate("/supply"),
-          });
+          toast.error(err.response.data.message);
         });
     } else {
       SupplyServices.updateSupplyById(
@@ -133,7 +131,7 @@ export default function AddSupply() {
   const supplyTypes = ["ONHAND", "INTRANSIT", "DAMAGED"];
   return (
     <div className="container mt-5">
-      <ToastContainer position="bottom-center" />
+      <ToastContainer position="bottom-left" />
       <form className="mt-3 p-3 shadow addItems" onSubmit={saveSupply}>
         <div class=" row mb-3">
           <div class="form-group col-md-6">
@@ -189,7 +187,7 @@ export default function AddSupply() {
 
         <Button
           variant="contained"
-          color="success"
+          className="bg-info text-black"
           type="submit"
           sx={{ mt: 2 }}
         >

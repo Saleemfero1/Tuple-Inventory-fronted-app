@@ -139,7 +139,7 @@ export default function AddThreshold() {
   }));
   return (
     <div className="container mt-5">
-      <ToastContainer position="bottom-center" />
+      <ToastContainer position="bottom-left" />
       <form className="mt-3 p-3 shadow addItems" onSubmit={saveThreshold}>
         <div class=" row mb-3">
           <div class="form-group col-md-6">
@@ -189,7 +189,7 @@ export default function AddThreshold() {
 
         <Button
           variant="contained"
-          color="success"
+          className="bg-info text-black"
           type="submit"
           sx={{ mt: 2 }}
         >

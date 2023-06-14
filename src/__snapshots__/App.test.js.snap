@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="sticky-top"
+    data-testid="navTest"
+  >
+    <nav
+      className="navbar navbar-expand-lg"
+    >
+      <div
+        className="container-fluid"
+      >
+        <a
+          className="navbar-brand ms-3 me-5"
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt=""
+            className="me-2"
+            src="supply-chain.png"
+            width={50}
+          />
+          <span
+            className="firstLetter"
+          >
+            T
+          </span>
+          uple
+          <span
+            className="firstLetter"
+          >
+            I
+          </span>
+          nventory
+          <span
+            className="firstLetter"
+          >
+             M
+          </span>
+          anagement
+        </a>
+        <button
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          className="navbar-toggler"
+          data-bs-target="#navbarText"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          className="collapse navbar-collapse justify-content-center"
+          id="navbarText"
+        >
+          <ul
+            className="navbar-nav mb-2 mb-lg-0 "
+          >
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current="page"
+                className="nav-link active"
+                href="/"
+                onClick={[Function]}
+              >
+                Home
+              </a>
+            </li>
+          </ul>
+          <ul
+            className="navbar-nav me-auto mb-2 mb-lg-0"
+          >
+            <li
+              className="nav-item"
+            >
+              <a
+                aria-current="page"
+                className="nav-link active"
+                href="/"
+                onClick={[Function]}
+              >
+                About Us
+              </a>
+            </li>
+          </ul>
+          <span
+            className="navbar-text me-3"
+          >
+            <button
+              ariant="outlined"
+              className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
+              disabled={false}
+              onBlur={[Function]}
+              onContextMenu={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <a
+                className="logIn-btn text-white"
+                href="/signin"
+                onClick={[Function]}
+              >
+                LogIn
+              </a>
+            </button>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <div
+      aria-labelledby="offcanvasRightLabel"
+      className="offcanvas offcanvas-end "
+      id="offcanvasRight"
+      tabIndex="-1"
+    >
+      <div
+        className="offcanvas-header"
+      >
+        <h5
+          className="offcanvas-title"
+          id="offcanvasRightLabel"
+        >
+          User Profile
+        </h5>
+        <button
+          aria-label="Close"
+          className="btn-close"
+          data-bs-dismiss="offcanvas"
+          type="button"
+        />
+      </div>
+      <div
+        className="offcanvas-body container"
+      >
+        <div
+          aria-hidden="true"
+          className="card shadow my-3"
+        >
+          <div
+            className="profileCard"
+          />
+          <div
+            className="card-body"
+          >
+            <div>
+              <div>
+                <div
+                  className="card "
+                >
+                  <img
+                    alt="user"
+                    className="card-img-top profile ms-5"
+                    height="200px"
+                    src="user1.png"
+                    width="100px"
+                  />
+                  <div
+                    className="card-body"
+                  >
+                    <h5
+                      className="card-title"
+                    />
+                    <p
+                      className="card-text"
+                    >
+                      Email ID: 
+                    </p>
+                    <p
+                      className="card-text"
+                    >
+                      Organization Id:
+                       
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="d-grid gap-2"
+                >
+                  <button
+                    className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-180lf2n-MuiButtonBase-root-MuiButton-root"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onContextMenu={[Function]}
+                    onDragLeave={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    tabIndex={0}
+                    type="button"
+                  >
+                    LogOut
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="set-img"
+  >
+    <div
+      className="row from-right"
+    >
+      <div
+        className="homeInfo"
+      >
+        <h1
+          className="tuple-in"
+          data-testid="tuple-inventory"
+        >
+          <span
+            className="I"
+          >
+            T
+          </span>
+          uple 
+          <span
+            className="I"
+          >
+            I
+          </span>
+          nventory
+        </h1>
+        <h1
+          className="manage"
+        >
+          <span
+            className="I"
+          >
+            M
+          </span>
+          anagement
+        </h1>
+        <div
+          className="description "
+        >
+          <p
+            className="lead"
+          >
+            "Efficient inventory management is the backbone of successful businesses, ensuring the right products are available at the right time, minimizing stockouts, and maximizing customer satisfaction."
+          </p>
+        </div>
+        <div
+          className="row mt-3"
+        >
+          <div
+            className="col-sm-6"
+          >
+            <a
+              className="btn  home-buttons"
+              href="/signup"
+              onClick={[Function]}
+              type="button"
+            >
+              SignUp
+            </a>
+          </div>
+          <div
+            className="col-sm-6"
+          >
+            <a
+              className="btn  home-buttons"
+              href="/signin"
+              onClick={[Function]}
+              type="button "
+            >
+              SignIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

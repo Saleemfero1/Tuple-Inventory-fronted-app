@@ -16,18 +16,18 @@ import TablePaginationActions from "../Table/TablePaginationActions";
 import ItemServices from "../../Service/ItemServices";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../TokenDetails/AuthContext";
-import acitveLogo from "../images/active1.svg";
-import inacitveLogo from "../images/inactive1.svg";
-import { lightGreen, pink, orange } from "@mui/material/colors";
+import acitveLogo from "../images/on-button.png";
+import inacitveLogo from "../images/off-button.png";
+import { lightGreen, pink, orange, red, green } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 import axios from "axios";
 import { useEffect } from "react";
 import { log } from "util";
 
-const redTheme = createTheme({ palette: { primary: lightGreen } });
-const orangeTheme = createTheme({
-  palette: { primary: orange, secondary: pink },
-});
+// const redTheme = createTheme({ palette: { primary: green } });
+// const orangeTheme = createTheme({
+//   palette: { primary: red },
+// });
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -56,7 +56,7 @@ export default function ItemTabel({
   updateFun,
   search,
 }) {
-  // const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState([]); //pagination api
 
   const [dataLength, setDataLength] = React.useState(0);
   const { setItemData } = React.useContext(AuthContext);
@@ -64,38 +64,36 @@ export default function ItemTabel({
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [rowsPerPage, page, setData]);
+  //pagination Api
+  useEffect(() => {
+    fetchData();
+  }, [rowsPerPage, page]);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "http://localhost:1111/item/page/" +
-  //         sessionStorage.getItem("organizationId"),
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ` + sessionStorage.getItem("token"),
-  //         },
-  //         params: {
-  //           pageNumber: page,
-  //           pageSize: rowsPerPage,
-  //         },
-  //       }
-  //     );
-  //     console.log(response.data.content);
-  //     // Set the received data in the state
-  //     setData(response.data.content);
-  //     console.log(data);
-  //     setDataLength(response.data.totalElements);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:1111/item/page/" +
+          sessionStorage.getItem("organizationId"),
+        {
+          headers: {
+            Authorization: `Bearer ` + sessionStorage.getItem("token"),
+          },
+          params: {
+            pageNumber: page,
+            pageSize: rowsPerPage,
+          },
+        }
+      );
+      setData(response.data.content);
+      setDataLength(response.data.totalElements);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // handle pages
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - itemData.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataLength) : 0; //itemData.length
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -137,6 +135,7 @@ export default function ItemTabel({
           .catch((error) => {
             console.log(error);
           });
+        fetchData();
         toast.success(newItem.status ? "Item activated" : "Item Inactivated");
       })
       .catch((err) => {
@@ -146,7 +145,7 @@ export default function ItemTabel({
 
   return (
     <TableContainer component={Paper}>
-      <ToastContainer position="bottom-center"></ToastContainer>
+      <ToastContainer position="bottom-left"></ToastContainer>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -165,26 +164,23 @@ export default function ItemTabel({
           </TableRow>
         </TableHead>
         <TableBody>
-          {(rowsPerPage > 0
-            ? itemData
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .filter((element) =>
-                  element.itemName.toLowerCase().includes(search)
-                )
-            : itemData
-          ).map((element) => (
-            <StyledTableRow key={element.itemId}>
-              <StyledTableCell component="th" scope="row">
-                {element.itemId}
-              </StyledTableCell>
+          {data
+            .filter((element) =>
+              element.itemName.toLowerCase().includes(search)
+            )
+            .map((element) => (
+              <StyledTableRow key={element.itemId}>
+                <StyledTableCell component="th" scope="row">
+                  {element.itemId}
+                </StyledTableCell>
 
-              <StyledTableCell align="center">
-                {element.itemName}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                {element.itemDescription}
-              </StyledTableCell>
-              {/* <StyledTableCell align="right">
+                <StyledTableCell align="center">
+                  {element.itemName}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.itemDescription}
+                </StyledTableCell>
+                {/* <StyledTableCell align="right">
                 {element.pickupAllowed ? "yes" : "No"}
               </StyledTableCell>
               <StyledTableCell align="right">
@@ -193,48 +189,49 @@ export default function ItemTabel({
               <StyledTableCell align="right">
                 {element.deliveryAllowed ? "Yes" : "No"}
               </StyledTableCell> */}
-              <StyledTableCell align="center">
-                {element.category}
-              </StyledTableCell>
-              <StyledTableCell align="center">{element.type}</StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.category}
+                </StyledTableCell>
+                <StyledTableCell align="center">{element.type}</StyledTableCell>
 
-              <StyledTableCell align="center">{element.price}</StyledTableCell>
-              <StyledTableCell align="right">
-                <Button
-                  variant="contained"
-                  theme={element.status ? redTheme : orangeTheme}
-                  sx={{ mr: 1, p: 0 }}
-                  onClick={() => activeItem(element)}
-                >
-                  <img
-                    src={element.status ? inacitveLogo : acitveLogo}
-                    alt=""
-                  />
-                </Button>
-              </StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.price}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <Button
+                    sx={{ mr: 1, p: 0 }}
+                    onClick={() => activeItem(element)}
+                  >
+                    <img
+                      src={element.status ? acitveLogo : inacitveLogo}
+                      alt=""
+                      width={40}
+                    />
+                  </Button>
+                </StyledTableCell>
 
-              <StyledTableCell align="right">
-                <Button
-                  variant="contained"
-                  className="bg-info text-black"
-                  onClick={() => updateFun(element.itemId)}
-                  sx={{ mr: 1, p: 1 }}
-                >
-                  <EditIcon />
-                </Button>
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                <Button
-                  variant="contained"
-                  color="error"
-                  onClick={() => deleteFun(element.itemId)}
-                  sx={{ mr: 2, p: 1 }}
-                >
-                  <DeleteIcon />
-                </Button>
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
+                <StyledTableCell align="right">
+                  <Button
+                    variant="contained"
+                    className="bg-info text-black"
+                    onClick={() => updateFun(element.itemId)}
+                    sx={{ mr: 1, p: 1 }}
+                  >
+                    <EditIcon />
+                  </Button>
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => deleteFun(element.itemId, fetchData)}
+                    sx={{ mr: 2, p: 1 }}
+                  >
+                    <DeleteIcon />
+                  </Button>
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
               <TableCell colSpan={6} />
@@ -244,9 +241,15 @@ export default function ItemTabel({
         <TableFooter>
           <TableRow>
             <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+              rowsPerPageOptions={[
+                5,
+                10,
+                25,
+                50,
+                { label: "All", value: dataLength },
+              ]}
               colSpan={12}
-              count={itemData.length}
+              count={dataLength}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{

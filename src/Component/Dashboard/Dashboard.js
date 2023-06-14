@@ -1,7 +1,4 @@
 import * as React from "react";
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import { useState, useEffect } from "react";
 import Container from "@mui/material/Container";
@@ -19,6 +16,7 @@ import Stock from "../images/stock.png";
 import Stockout from "../images/outStock.png";
 import Trend from "../images/trend.png";
 import ActiveItem from "../images/activeItem.png";
+import { Typography } from "@mui/material";
 
 export default function Dashboard() {
   const {
@@ -36,7 +34,7 @@ export default function Dashboard() {
   //This is data for dashboard and full screen model
   const detailBoxes = [
     {
-      heading: "Active Items",
+      heading: "Active",
       heading1: "Total Items",
       heading2: "Total Categories",
       num: digg.totalActiveItems,
@@ -48,11 +46,14 @@ export default function Dashboard() {
       imgSrc: ActiveItem,
       num3: digg.totalCategories,
       data: {
-        labels: ["Total Items", "Active Items"],
+        labels: ["Inactive Items", "Active Items"],
         datasets: [
           {
             label: "Items",
-            data: [digg.TotalItems, digg.totalActiveItems],
+            data: [
+              digg.TotalItems - digg.totalActiveItems,
+              digg.totalActiveItems,
+            ],
             backgroundColor: ["#0091ea", "rgb(1, 220, 93)"],
             hoverOffset: 4,
           },
@@ -67,11 +68,14 @@ export default function Dashboard() {
       itemData: lowAndHighStock,
       imgSrc: Stock,
       data: {
-        labels: ["Total Items", "High Stock"],
+        labels: ["Rest Of Items", "High Stock Items"],
         datasets: [
           {
             label: "Items",
-            data: [digg.TotalItems, digg.totalHighStockItems],
+            data: [
+              digg.TotalItems - digg.totalHighStockItems,
+              digg.totalHighStockItems,
+            ],
             backgroundColor: ["#0091ea", "#64dd17"],
             hoverOffset: 4,
           },
@@ -86,11 +90,14 @@ export default function Dashboard() {
       itemData: lowAndHighStock,
       imgSrc: Stockout,
       data: {
-        labels: ["Total Items", "Low Stock"],
+        labels: ["Rest Of Items", "Low Stock Items"],
         datasets: [
           {
             label: "Items",
-            data: [digg.TotalItems, digg.totalLowStockItems],
+            data: [
+              digg.TotalItems - digg.totalLowStockItems,
+              digg.totalLowStockItems,
+            ],
             backgroundColor: ["#0091ea", "rgb(252, 3, 3)"],
             hoverOffset: 4,
           },
@@ -98,10 +105,16 @@ export default function Dashboard() {
       },
     },
     {
-      heading: "Trending Items",
-      heading2: "Rest Of Items",
-      num: TrendingItems.getTotalDemandOfOtherItems,
-      num3: TrendingItems.totalDemandOfTopTenItems,
+      heading: "Items Demand",
+      heading2: "Rest Of Items Demand",
+      heading5: "Top Two Items Demand",
+      heading6: "Total Demand",
+      num: TrendingItems.totalDemandOfTopTenItems,
+      num2: TrendingItems.getTotalDemandOfOtherItems,
+      num3: TrendingItems.getTotalDemandOfOtherItems,
+      num5:
+        TrendingItems.getTotalDemandOfOtherItems -
+        TrendingItems.totalDemandOfTopTenItems,
       backgroundColor: "#e0f2f1",
       linkHeader: "View Details",
       imgSrc: Trend,
@@ -112,13 +125,14 @@ export default function Dashboard() {
           }))
         : null,
       data: {
-        labels: ["Top Ten Items", "Rest Of Items"],
+        labels: ["Rest Of Items", "Top Two Items"],
         datasets: [
           {
             label: "Demand",
             data: [
+              TrendingItems.getTotalDemandOfOtherItems -
+                TrendingItems.totalDemandOfTopTenItems,
               TrendingItems.totalDemandOfTopTenItems,
-              TrendingItems.getTotalDemandOfOtherItems,
             ],
             backgroundColor: ["#0091ea", "	rgb(255, 192, 0)"],
             hoverOffset: 4,
@@ -205,17 +219,16 @@ export default function Dashboard() {
           sx={{
             flexGrow: 1,
             height: "100vh",
-            overflow: "auto",
           }}
         >
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 5 }}>
             <Grid container spacing={3}>
               {/* details component*/}
               {detailBoxes.map((detail) => (
                 <Grid item xs={12} md={6} lg={3}>
                   <Paper
                     sx={{
-                      backgroundColor: "",
+                      backgroundColor: detail.backgroundColor,
                       p: 2,
                       display: "flex",
                       flexDirection: "column",
@@ -234,6 +247,9 @@ export default function Dashboard() {
                       data={detail.data}
                       itemData={detail.itemData ? detail.itemData : null}
                       imgSrc={detail.imgSrc ? detail.imgSrc : null}
+                      heading5={detail.heading5 ? detail.heading5 : null}
+                      heading6={detail.heading6 ? detail.heading6 : null}
+                      num5={detail.num5 ? detail.num5 : null}
                     />
                   </Paper>
                 </Grid>
@@ -246,10 +262,12 @@ export default function Dashboard() {
                 </Paper>
               </Grid>
             </Grid>
+            <Box>
+              <Footer></Footer>
+            </Box>
           </Container>
         </Box>
       </Box>
-      <Footer />
     </>
   );
 }

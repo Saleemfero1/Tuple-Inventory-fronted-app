@@ -1,4 +1,5 @@
 import * as React from "react";
+import ChartData from "../Chart/ChartData";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
@@ -10,16 +11,38 @@ import Slide from "@mui/material/Slide";
 import PolarChart from "../Chart/PolarChart";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import { styled } from "@mui/material/styles";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+// table modification
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
 
 export default function FullScreenDialog(props) {
   const [open, setOpen] = React.useState(false);
@@ -34,7 +57,9 @@ export default function FullScreenDialog(props) {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>View Details</Button>
+      <div onClick={handleClickOpen}>
+        <ChartData data={props.data} />
+      </div>
       <Dialog
         fullScreen
         open={open}
@@ -85,7 +110,7 @@ export default function FullScreenDialog(props) {
                   <TableBody>
                     <TableRow>
                       <TableCell align="left" sx={{ fontSize: 30 }}>
-                        {props.heading1}
+                        {props.heading5 ? props.heading5 : props.heading1}
                       </TableCell>
                       <TableCell align="right" sx={{ fontSize: 30 }}>
                         {props.num1}
@@ -93,10 +118,10 @@ export default function FullScreenDialog(props) {
                     </TableRow>
 
                     {/* if box has multiple headings2 & 3  */}
-                    {props.heading2 && (
+                    {(props.heading2 || props.heading6) && (
                       <TableRow>
                         <TableCell align="left" sx={{ fontSize: 30 }}>
-                          {props.heading2}
+                          {props.heading2 ? props.heading2 : props.heading6}
                         </TableCell>
                         <TableCell align="right" sx={{ fontSize: 30 }}>
                           {props.num2}
@@ -109,7 +134,7 @@ export default function FullScreenDialog(props) {
                           {props.heading3}
                         </TableCell>
                         <TableCell align="right" sx={{ fontSize: 30 }}>
-                          {props.num3}
+                          {props.num5 ? props.num5 : props.num3}
                         </TableCell>
                       </TableRow>
                     )}
@@ -143,17 +168,23 @@ export default function FullScreenDialog(props) {
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                       <TableHead>
                         {/* last box has only two columns so removing locationId column if last box heading matches with heading1 */}
-                        <TableRow>
-                          <TableCell align="left">Item Id</TableCell>
-                          {props.heading1 !== "Trending Items" && (
-                            <TableCell align="left">Location</TableCell>
+                        <StyledTableRow>
+                          <StyledTableCell align="left">
+                            Item Id
+                          </StyledTableCell>
+                          {props.heading1 !== "Items Demand" && (
+                            <StyledTableCell align="left">
+                              Location
+                            </StyledTableCell>
                           )}
-                          <TableCell align="right">Quantity</TableCell>
-                        </TableRow>
+                          <StyledTableCell align="right">
+                            Available Quantity
+                          </StyledTableCell>
+                        </StyledTableRow>
                       </TableHead>
 
                       {/* Here we have two different tables for StockItems and Trending Items based on headding mathes tables will be display*/}
-                      {props.heading1 !== "Trending Items" ? (
+                      {props.heading1 !== "Items Demand" ? (
                         //this table is for Stock items
                         <TableBody>
                           {props.itemData
@@ -165,7 +196,7 @@ export default function FullScreenDialog(props) {
                                   : "High Stock")
                             )
                             .map((item) => (
-                              <TableRow
+                              <StyledTableRow
                                 key={item.itemId}
                                 sx={{
                                   "&:last-child td, &:last-child th": {
@@ -173,23 +204,23 @@ export default function FullScreenDialog(props) {
                                   },
                                 }}
                               >
-                                <TableCell component="th" scope="row">
+                                <StyledTableCell component="th" scope="row">
                                   {item.itemId}
-                                </TableCell>
-                                <TableCell component="th" scope="row">
+                                </StyledTableCell>
+                                <StyledTableCell component="th" scope="row">
                                   {item.locationId}
-                                </TableCell>
-                                <TableCell align="right">
+                                </StyledTableCell>
+                                <StyledTableCell align="right">
                                   {item.quantity}
-                                </TableCell>
-                              </TableRow>
+                                </StyledTableCell>
+                              </StyledTableRow>
                             ))}
                         </TableBody>
                       ) : (
                         // This table is for Trending items
                         <TableBody>
                           {props.itemData.map((item) => (
-                            <TableRow
+                            <StyledTableRow
                               key={item.itemId}
                               sx={{
                                 "&:last-child td, &:last-child th": {
@@ -197,14 +228,14 @@ export default function FullScreenDialog(props) {
                                 },
                               }}
                             >
-                              <TableCell component="th" scope="row">
+                              <StyledTableCell component="th" scope="row">
                                 {item.itemId}
-                              </TableCell>
+                              </StyledTableCell>
 
-                              <TableCell align="right">
+                              <StyledTableCell align="right">
                                 {item.quantity}
-                              </TableCell>
-                            </TableRow>
+                              </StyledTableCell>
+                            </StyledTableRow>
                           ))}
                         </TableBody>
                       )}

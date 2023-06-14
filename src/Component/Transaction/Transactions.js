@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -13,6 +12,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TablePaginationActions from "../Table/TablePaginationActions";
 import { AuthContext } from "../../TokenDetails/AuthContext";
 import InventoryServices from "../../Service/InventoryServices";
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -36,16 +37,43 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const headings = ["Transaction Id", "Item Id", "Location Id", "Type", "Date"];
 export default function TransactionTable() {
-  const [search, setSearch] = React.useState("");
-  const { TransactionData, setTransactionData } = React.useContext(AuthContext);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [data, setData] = useState([]);
+  const [dataLength, setDataLength] = useState(0);
+  const [search, setSearch] = useState("");
+  const { TransactionData, setTransactionData } = useContext(AuthContext);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  //pagination Api
+  useEffect(() => {
+    fetchData();
+  }, [rowsPerPage, page, setData]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:1111/availability/v10/" +
+          sessionStorage.getItem("organizationId"),
+        {
+          headers: {
+            Authorization: `Bearer ` + sessionStorage.getItem("token"),
+          },
+          params: {
+            pageNumber: page,
+            pageSize: rowsPerPage,
+          },
+        }
+      );
+      setData(response.data.content);
+      setDataLength(response.data.totalElements);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0
-      ? Math.max(0, (1 + page) * rowsPerPage - TransactionData.length)
-      : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataLength) : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -105,33 +133,34 @@ export default function TransactionTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {(rowsPerPage > 0
-              ? TransactionData.reverse()
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .filter((element) =>
-                    element.itemId.toLowerCase().includes(search)
-                  )
-              : TransactionData
-            ).map((element) => (
-              <StyledTableRow key={element.id}>
-                <StyledTableCell component="th" scope="row">
-                  {element.id}
-                </StyledTableCell>
+            {data
+              .filter((element) =>
+                element.itemId.toLowerCase().includes(search)
+              )
+              .map((element) => (
+                <StyledTableRow key={element.id}>
+                  <StyledTableCell component="th" scope="row">
+                    {element.id}
+                  </StyledTableCell>
 
-                <StyledTableCell align="center">
-                  {element.itemId}
-                </StyledTableCell>
-                <StyledTableCell align="center">
-                  {element.locationId}
-                </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {element.itemId}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {element.locationId}
+                  </StyledTableCell>
 
-                <StyledTableCell align="center">{element.type}</StyledTableCell>
-                <StyledTableCell align="center">{element.date}</StyledTableCell>
-                <StyledTableCell align="right">
-                  {element.quantity}
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
+                  <StyledTableCell align="center">
+                    {element.type}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {element.date}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {element.quantity}
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
                 <TableCell colSpan={6} />
@@ -141,9 +170,15 @@ export default function TransactionTable() {
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[
+                  5,
+                  10,
+                  25,
+                  50,
+                  { label: "All", value: dataLength },
+                ]}
                 colSpan={12}
-                count={TransactionData.length}
+                count={dataLength}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 SelectProps={{

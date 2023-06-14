@@ -1,6 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
-import AuthServices from "../Service/AuthServices";
-import { log } from "util";
+import React, { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 

@@ -9,7 +9,8 @@ import { AuthContext } from "../../TokenDetails/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Demand() {
-  const [search, setSearch] = React.useState("");
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
   const { token, demandData, setDemandData } = useContext(AuthContext);
   const headings = [
     "Demand Id",
@@ -18,8 +19,6 @@ export default function Demand() {
     "Demand Type",
     "Quantity",
   ];
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     DemandServices.getDemand(sessionStorage.getItem("organizationId"), token)
@@ -34,7 +33,7 @@ export default function Demand() {
     setSearch(event.target.value);
   };
 
-  const deleteDemand = (demandId) => {
+  const deleteDemand = (demandId, fetchData) => {
     if (window.confirm("want to delete demand for:" + demandId + " ?")) {
       DemandServices.deleteDemand(
         sessionStorage.getItem("organizationId"),
@@ -42,6 +41,7 @@ export default function Demand() {
         token
       )
         .then((response) => {
+          fetchData();
           toast.success("Item deletd!");
         })
         .catch((error) => {
@@ -61,21 +61,22 @@ export default function Demand() {
 
   return (
     <>
-      <ToastContainer position="bottom-center" />
-      <div className="container">
+      <ToastContainer position="bottom-left" />
+      <div className="container" data-testid="demand">
         <div className=" mt-3">
-          <h3 variant="h3" className="text-center">
+          <h3 variant="h3" className="text-center" data-testid="DemandDetails">
             Demand Details
           </h3>
         </div>
         <div className="row mb-3">
           <div className="col-6">
-            <div class="col-md-6">
+            <div className="col-md-6">
               <input
                 type="text"
-                class="search form-control"
+                className="search form-control"
                 placeholder="Search Demand By ItemId"
                 onChange={handleSearch}
+                data-testid="search"
               />
             </div>
           </div>
@@ -84,6 +85,7 @@ export default function Demand() {
               <Button
                 variant="contained"
                 className="text-black bg-info align-right"
+                data-testid="addDemand"
               >
                 Add Demand
               </Button>

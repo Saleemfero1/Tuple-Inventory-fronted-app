@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LocationServices from "../../Service/LocationServices";
 import ItemServices from "../../Service/ItemServices";
-
 import DemandServices from "../../Service/DemandServices";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../TokenDetails/AuthContext";
@@ -13,8 +12,7 @@ export default function AddDemand() {
   const { token } = useContext(AuthContext);
   const queryParameters = new URLSearchParams(window.location.search);
   const id = queryParameters.get("id");
-
-  const [demandTypes, setDemandTypes] = useState(["PLANNED", "HARDPROMISED"]);
+  const [demandTypes] = useState(["PLANNED", "HARDPROMISED"]);
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -141,20 +139,28 @@ export default function AddDemand() {
 
   return (
     <div className="container mt-5">
-      <ToastContainer position="bottom-center" />
-      <form className="mt-3 p-3 shadow addItems" onSubmit={saveDemand}>
-        <div class=" row mb-3 ">
-          <div class="form-group col-md-6">
-            <label for="itemId">Select Item</label>
+      <ToastContainer position="bottom-left" />
+      <form
+        className="mt-3 p-3 shadow addItems"
+        onSubmit={saveDemand}
+        data-testid="add-demand-form"
+      >
+        <div className=" row mb-3 ">
+          <div className="form-group col-md-6">
+            <label htmlFor="itemId" data-testid="itemId">
+              Select Item
+            </label>
             <Select
-              placeholder="Serach item"
+              placeholder="Search item"
               options={optionItems}
               value={demand.itemId["itemId"]}
               onChange={onChangeItemId}
             ></Select>
           </div>
-          <div class="form-group col-md-6">
-            <label for="LocationId">Location Id</label>
+          <div className="form-group col-md-6">
+            <label htmlFor="LocationId" data-testid="locationId">
+              Location Id
+            </label>
             <Select
               placeholder="Serach location"
               options={optionLocations}
@@ -164,11 +170,13 @@ export default function AddDemand() {
           </div>
         </div>
 
-        <div class=" row">
-          <div class="form-group col-md-6">
-            <label for="demandType">Demand Type</label>
+        <div className=" row">
+          <div className="form-group col-md-6">
+            <label htmlFor="demandType" data-testid="demandType">
+              Demand Type
+            </label>
             <select
-              class="form-select"
+              className="form-select"
               aria-label="Default select example"
               value={demand.demandType}
               onChange={onChangeDemandType}
@@ -181,11 +189,13 @@ export default function AddDemand() {
             </select>
           </div>
 
-          <div class="form-group col-md-6">
-            <label for="Quantity">Quantity</label>
+          <div className="form-group col-md-6">
+            <label htmlFor="Quantity" data-testid="Quantity">
+              Quantity
+            </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="Quantity"
               placeholder="Enter Quantity"
               value={demand.quantity}
@@ -197,7 +207,7 @@ export default function AddDemand() {
 
         <Button
           variant="contained"
-          color="success"
+          className="bg-info text-black"
           type="submit"
           sx={{ mt: 2 }}
         >

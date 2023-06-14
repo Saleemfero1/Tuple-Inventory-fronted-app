@@ -30,7 +30,7 @@ export default function Supply() {
       });
   }, [setSupplyData, token]);
 
-  const deleteSupply = (supplyId) => {
+  const deleteSupply = (supplyId, fetchData) => {
     if (window.confirm("want to delete Supply for Id:" + supplyId + " ?")) {
       SupplyServices.deleteSupply(
         sessionStorage.getItem("organizationId"),
@@ -38,6 +38,7 @@ export default function Supply() {
         token
       )
         .then((response) => {
+          fetchData();
           toast.success("Supply deleted");
         })
         .catch((err) => {
@@ -61,7 +62,7 @@ export default function Supply() {
 
   return (
     <div className="container">
-      <ToastContainer position="bottom-center" />
+      <ToastContainer position="bottom-left" />
       <div className=" mt-3">
         <h3 variant="h3" className="text-center">
           Supply Details

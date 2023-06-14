@@ -5,23 +5,26 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../TokenDetails/AuthContext";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import LogoImage from "../images/supply-chain.png";
+import LogoImage from "../images/logo.png";
 export default function Navbar() {
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
 
   return (
-    <div className="sticky-top">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <Link class="navbar-brand ms-3 me-5" to={token ? "/dashboard" : "/"}>
+    <div className="sticky-top" data-testid="navTest">
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid">
+          <Link
+            className="navbar-brand ms-3 me-5"
+            to={token ? "/dashboard" : "/"}
+          >
             <img src={LogoImage} alt="" width={50} className="me-2" />
             <span className="firstLetter">T</span>uple
             <span className="firstLetter">I</span>nventory
             <span className="firstLetter"> M</span>anagement
           </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarText"
@@ -29,64 +32,73 @@ export default function Navbar() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div
             className="collapse navbar-collapse justify-content-center"
             id="navbarText"
           >
             {!token && (
-              <ul class="navbar-nav mb-2 mb-lg-0 ">
-                <li class="nav-item">
-                  <Link class="nav-link active" aria-current="page" to="/">
+              <ul className="navbar-nav mb-2 mb-lg-0 ">
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/">
                     Home
                   </Link>
                 </li>
               </ul>
             )}
             {token && (
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                <li class="nav-item">
-                  <Link class="nav-link " aria-current="page" to="dashboard">
-                    Dashbord
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <li className="nav-item">
+                  <Link
+                    className="nav-link "
+                    aria-current="page"
+                    to="dashboard"
+                    data-testid="dashId"
+                  >
+                    Dashboard
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="item">
+                <li className="nav-item">
+                  <Link className="nav-link" to="item">
                     Item
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="location">
+                <li className="nav-item">
+                  <Link className="nav-link" to="location">
                     Location
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="supply">
+                <li className="nav-item">
+                  <Link className="nav-link" to="supply">
                     Supply
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="demand">
+                <li className="nav-item">
+                  <Link className="nav-link" to="demand">
                     Demand
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="threshold">
+                <li className="nav-item">
+                  <Link className="nav-link" to="threshold">
                     Threshold
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link" to="transaction">
+                <li className="nav-item">
+                  <Link className="nav-link" to="transaction">
                     Transaction
                   </Link>
                 </li>
               </ul>
             )}
             {!token && (
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <Link class="nav-link active" aria-current="page" to="/">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="aboutus"
+                  >
                     About Us
                   </Link>
                 </li>
@@ -94,9 +106,9 @@ export default function Navbar() {
             )}
 
             {token && (
-              <span class="navbar-text me-3">
+              <span className="navbar-text me-3">
                 <button
-                  class="btn btn-profile"
+                  className="btn btn-profile"
                   type="button"
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"
@@ -107,7 +119,7 @@ export default function Navbar() {
                     width="18"
                     height="18"
                     fill="currentColor"
-                    class="bi bi-person"
+                    className="bi bi-person"
                     viewBox="0 0 16 16"
                   >
                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
@@ -130,29 +142,29 @@ export default function Navbar() {
       </nav>
 
       <div
-        class="offcanvas offcanvas-end "
+        className="offcanvas offcanvas-end "
         tabIndex="-1"
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
       >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="offcanvasRightLabel">
             User Profile
           </h5>
           <button
             type="button"
-            class="btn-close"
+            className="btn-close"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body container">
-          <div class="card shadow my-3" aria-hidden="true">
-            <div class="profileCard"></div>
-            <div class="card-body">
+        <div className="offcanvas-body container">
+          <div className="card shadow my-3" aria-hidden="true">
+            <div className="profileCard"></div>
+            <div className="card-body">
               <div>
                 <div>
-                  <div class="card ">
+                  <div className="card ">
                     <img
                       src={userImg}
                       className="card-img-top profile ms-5"
@@ -160,8 +172,8 @@ export default function Navbar() {
                       width="100px"
                       height="200px"
                     />
-                    <div class="card-body">
-                      <h5 class="card-title">
+                    <div className="card-body">
+                      <h5 className="card-title">
                         {sessionStorage.getItem("username")}
                       </h5>
 
@@ -175,7 +187,7 @@ export default function Navbar() {
                     </div>
                   </div>
 
-                  <div class="d-grid gap-2">
+                  <div className="d-grid gap-2">
                     <Button
                       variant="outlined"
                       color="error"

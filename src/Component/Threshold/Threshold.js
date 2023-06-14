@@ -37,7 +37,7 @@ export default function Threshold() {
     setSearch(event.target.value);
   };
 
-  const deleteThreshold = (thresholdId) => {
+  const deleteThreshold = (thresholdId, fetchData) => {
     if (window.confirm("want to delete Threshold for:" + thresholdId + " ?")) {
       ThresholdServices.deleteThreshold(
         sessionStorage.getItem("organizationId"),
@@ -45,6 +45,7 @@ export default function Threshold() {
         token
       )
         .then((response) => {
+          fetchData();
           toast.success("Threshold Deleted!");
         })
         .catch((err) => {
@@ -64,7 +65,7 @@ export default function Threshold() {
 
   return (
     <div className="container">
-      <ToastContainer position="bottom-center" />
+      <ToastContainer position="bottom-left" />
       <div className=" my-3">
         <h3 var className="text-center">
           Threshold Details

@@ -45,7 +45,7 @@ export default function Location() {
       });
   }, [setLocationData, token]);
 
-  const deleteLocation = (locationId) => {
+  const deleteLocation = (locationId, fetchData) => {
     if (window.confirm("Want to delete location?")) {
       LocationServices.deleteLocation(
         sessionStorage.getItem("organizationId"),
@@ -53,6 +53,7 @@ export default function Location() {
         token
       )
         .then((response) => {
+          fetchData();
           toast.success("Location deleted");
         })
         .catch((error) => {
@@ -68,23 +69,11 @@ export default function Location() {
     } else {
       console.log("location not found");
     }
-
-    // LocationServices.getLocationByLocationId(
-    //   sessionStorage.getItem("organizationId"),
-    //   locationId,
-    //   token
-    // )
-    //   .then((response) => {
-    //     navigate(`/location/add?id=${locationId}`);
-    //   })
-    //   .catch((error) => {
-    //     alert(error);
-    //   });
   };
 
   return (
     <div className="container ">
-      <ToastContainer position="bottom-center" />
+      <ToastContainer position="bottom-left" />
       <div className="mt-3">
         <h3 variant="h3" className="text-center">
           Location Details

@@ -17,12 +17,16 @@ import AuthServices from "../../Service/AuthServices";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { blue } from "@mui/material/colors";
+import { Alert } from "@mui/material";
+import bgImage from "../images/bg.jpg";
+import { Balance } from "@mui/icons-material";
+import "./signin.css";
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color=" #6a7ae4" align="center" {...props}>
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="http://localhost:3000/">
         TupleInventory Management
       </Link>{" "}
       {new Date().getFullYear()}
@@ -41,12 +45,10 @@ export default function Register() {
     organizationId: "",
     password: "",
   });
-  const [EmailError, setEmailError] = useState("Email Adress");
+  const [alertBox, setAlertBox] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
+  //OnChnage Handlers
   const onChangeUserName = (event) => {
     setUser({ ...user, username: event.target.value });
   };
@@ -63,7 +65,53 @@ export default function Register() {
     setUser({ ...user, password: event.target.value });
   };
 
-  const registerUser = (event) => {
+  // Validation Methods
+
+  const isValidName = (name) => {
+    // Regular expression to validate name format (no numbers)
+    const nameRegex = /^[a-zA-Z\s]*$/;
+    return nameRegex.test(name);
+  };
+
+  const isValidEmail = (email) => {
+    // Regular expression to validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (user.username.trim() === "") {
+      setAlertMessage("Please enter your username.");
+      setAlertBox(true);
+      return;
+    }
+
+    if (!isValidName(user.username)) {
+      setAlertMessage("Please enter a valid username without numbers.");
+      setAlertBox(true);
+      return;
+    }
+
+    if (!isValidEmail(user.userEmail)) {
+      setAlertMessage("Please enter a valid email address.");
+      setAlertBox(true);
+      return;
+    }
+
+    if (user.organizationId.trim() === "") {
+      setAlertMessage("Please enter your OrganizationId.");
+      setAlertBox(true);
+      return;
+    }
+
+    if (user.password.trim() === "") {
+      setAlertMessage("Please enter your password.");
+      setAlertBox(true);
+      return;
+    }
+
     event.preventDefault();
     AuthServices.registerUser(user)
       .then((response) => {
@@ -72,116 +120,133 @@ export default function Register() {
         });
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        toast.error(err.response.data);
       });
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <ToastContainer position="bottom-center" />
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            backgroundColor: blue,
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "#6a7ae4" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={registerUser}
-            sx={{ mt: 3 }}
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="username"
-                  required
-                  fullWidth
-                  id="username"
-                  label="User Name"
-                  value={user.username}
-                  onChange={onChangeUserName}
-                  autoFocus
-                />
-              </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  value={user.userEmail}
-                  onChange={onChangeUserEmail}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="organizationId"
-                  label="Organization Id"
-                  name="OrganizationId"
-                  autoComplete="Organization"
-                  value={user.organizationId}
-                  onChange={onChangeOrganizationId}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  value={user.password}
-                  onChange={onChangePassword}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
-            </Grid>
+    <div className="div-body">
+      <ToastContainer position="bottom-left" />
+      {alertBox && (
+        <Alert
+          severity="error"
+          action={
             <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: "#6a7ae4" }}
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setAlertBox(false);
+                setAlertMessage("");
+              }}
             >
-              Sign Up
+              UNDO
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link variant="body2" to="/signin" color={"#6a7ae4"}>
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-    </ThemeProvider>
+          }
+        >
+          {alertMessage}
+        </Alert>
+      )}
+
+      <div className="div-justify">
+        <ThemeProvider theme={defaultTheme}>
+          <Container component="main" maxWidth="sm">
+            <CssBaseline />
+            <Box
+              sx={{
+                pt: 8,
+                display: "flex",
+                backgroundColor: blue,
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Avatar sx={{ m: 1, bgcolor: "#6a7ae4" }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign up
+              </Typography>
+              <Box
+                component="form"
+                noValidate
+                onSubmit={handleSubmit}
+                sx={{ mt: 3 }}
+              >
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <TextField
+                      data-testid="userName"
+                      autoComplete="given-name"
+                      name="username"
+                      required
+                      fullWidth
+                      id="username"
+                      label="User Name"
+                      value={user.username}
+                      onChange={onChangeUserName}
+                      autoFocus
+                    />
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      value={user.userEmail}
+                      onChange={onChangeUserEmail}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      id="organizationId"
+                      label="Organization Id"
+                      name="OrganizationId"
+                      autoComplete="Organization"
+                      value={user.organizationId}
+                      onChange={onChangeOrganizationId}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="password"
+                      label="Password"
+                      type="password"
+                      id="password"
+                      autoComplete="new-password"
+                      value={user.password}
+                      onChange={onChangePassword}
+                    />
+                  </Grid>
+                </Grid>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, bgcolor: "#6a7ae4" }}
+                >
+                  Sign Up
+                </Button>
+                <Grid container justifyContent="flex-end">
+                  <Grid item>
+                    <Link variant="body2" href="/signin" color={"#6a7ae4"}>
+                      Already have an account? Sign in
+                    </Link>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Box>
+            <Copyright sx={{ mt: 5 }} />
+          </Container>
+        </ThemeProvider>
+      </div>
+    </div>
   );
 }

@@ -9,7 +9,7 @@ import { AuthContext } from "../../TokenDetails/AuthContext";
 import TextField from "@mui/material/TextField";
 import { Padding } from "@mui/icons-material";
 import Box from "@mui/material/Box";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Items(props) {
   const [search, setSearch] = React.useState("");
@@ -42,7 +42,7 @@ export default function Items(props) {
     setSearch(event.target.value);
   };
 
-  const deleteItem = (itemId) => {
+  const deleteItem = (itemId, fetchData) => {
     if (window.confirm("Want to delete item?")) {
       ItemServices.deleteItem(
         sessionStorage.getItem("organizationId"),
@@ -50,6 +50,7 @@ export default function Items(props) {
         token
       )
         .then((response) => {
+          fetchData();
           toast.success("item deleted");
         })
         .catch((error) => {

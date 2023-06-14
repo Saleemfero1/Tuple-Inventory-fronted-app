@@ -1,0 +1,22 @@
+.div-body{
+   background-image: url("../images/bg.jpg");
+   background-size: 60%;
+   background-repeat: no-repeat;
+   background-position-x: right;
+   background-position-y: center;
+   height: 100vh;
+}
+.div-justify{
+    width: 40vw;
+    padding-left: 3rem;
+}
+@media screen and (max-width:1111px) {
+    .div-body{
+        background-image: none;
+        
+     }
+     .div-justify{
+         width:100vw;
+         padding-left:0;
+     }
+}

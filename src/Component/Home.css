@@ -1,3 +1,4 @@
+
 .set-img{
   background-image: url("../Component/images/bg2.jpg");
   background-size:70%;
@@ -16,9 +17,10 @@
 }
 
 .I {
-  background: -webkit-linear-gradient(#0ce0f3, #0312e8);
+  color: rgb(218, 15, 208);
+  /* background: -webkit-linear-gradient(#0ce0f3, #0312e8);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
   font-weight: bold;
 }
 
@@ -37,7 +39,7 @@
   width: 100%;
   font-size: 20px;
   border-radius: 3px;
-  background-color: aliceblue;
+  background-color: rgb(252, 252, 254);
   box-shadow: 0.5px 0.5px 5px rgb(61, 92, 231),
     -0.5px -0.5px 5px rgb(62, 206, 214);
 }
@@ -57,7 +59,7 @@
     margin-left:0;
   }
   .from-right{
-    width:90vw;
+    width:94vw;
   }
 }
 

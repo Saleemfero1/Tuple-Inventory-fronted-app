@@ -14,6 +14,7 @@ export default function ChartData(props) {
       legend: {
         display: true,
         position: "bottom",
+        align: "start",
         labels: {
           boxWidth: 20,
         },

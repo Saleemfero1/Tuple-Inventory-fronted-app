@@ -13,6 +13,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import TableFooter from "@mui/material/TableFooter";
 import TablePagination from "@mui/material/TablePagination";
 import TablePaginationActions from "./TablePaginationActions";
+import { useEffect } from "react";
+import axios from "axios";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -43,10 +45,38 @@ export default function DataTabel({
 }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [data, setData] = React.useState([]);
+  const [dataLength, setDataLength] = React.useState(0);
+  //Pagination API
+  useEffect(() => {
+    fetchData();
+  }, [rowsPerPage, page, setData]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:1111/location/page/" +
+          sessionStorage.getItem("organizationId"),
+        {
+          headers: {
+            Authorization: `Bearer ` + sessionStorage.getItem("token"),
+          },
+          params: {
+            pageNumber: page,
+            pageSize: rowsPerPage,
+          },
+        }
+      );
+      setData(response.data.content);
+      setDataLength(response.data.totalElements);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - locationData.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataLength) : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -61,7 +91,7 @@ export default function DataTabel({
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="custom pagination table">
         <TableHead>
-          <TableRow>
+          <TableRow key={"head"}>
             {headings.map((head) => (
               <StyledTableCell style={{ fontSize: "17px" }}>
                 {head}
@@ -77,26 +107,23 @@ export default function DataTabel({
           </TableRow>
         </TableHead>
         <TableBody>
-          {(rowsPerPage > 0
-            ? locationData
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .filter((element) =>
-                  element.locationDesc.toLowerCase().includes(search)
-                )
-            : locationData
-          ).map((element) => (
-            <StyledTableRow key={element.locationId}>
-              <StyledTableCell component="th" scope="row">
-                {element.locationId}
-              </StyledTableCell>
+          {data
+            .filter((element) =>
+              element.locationDesc.toLowerCase().includes(search)
+            )
+            .map((element) => (
+              <StyledTableRow key={element.locationId}>
+                <StyledTableCell component="th" scope="row">
+                  {element.locationId}
+                </StyledTableCell>
 
-              <StyledTableCell align="center">
-                {element.locationDesc}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                {element.locationType}
-              </StyledTableCell>
-              {/* <StyledTableCell align="right">
+                <StyledTableCell align="center">
+                  {element.locationDesc}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.locationType}
+                </StyledTableCell>
+                {/* <StyledTableCell align="right">
                 {element.pickupAllowed ? "yes" : "No"}
               </StyledTableCell>
               <StyledTableCell align="right">
@@ -105,45 +132,47 @@ export default function DataTabel({
               <StyledTableCell align="right">
                 {element.deliveryAllowed ? "Yes" : "No"}
               </StyledTableCell> */}
-              <StyledTableCell align="center">
-                {element.addressLine1}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                {element.addressLine2}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                {element.addressLine3}
-              </StyledTableCell>
-              <StyledTableCell align="center">{element.city}</StyledTableCell>
-              <StyledTableCell align="center">{element.state}</StyledTableCell>
-              <StyledTableCell align="center">
-                {element.country}
-              </StyledTableCell>
-              <StyledTableCell align="center">
-                {element.pinCode}
-              </StyledTableCell>
-              <StyledTableCell align="right" xs={4}>
-                <Button
-                  variant="contained"
-                  color="error"
-                  onClick={() => deleteFun(element.locationId)}
-                  sx={{ mr: 2 }}
-                >
-                  <DeleteIcon />
-                </Button>
-              </StyledTableCell>
-              <StyledTableCell align="left">
-                <Button
-                  variant="contained"
-                  className="text-black bg-info"
-                  onClick={() => updateFun(element.locationId)}
-                  sx={{ mr: 1 }}
-                >
-                  <EditIcon />
-                </Button>
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
+                <StyledTableCell align="center">
+                  {element.addressLine1}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.addressLine2}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.addressLine3}
+                </StyledTableCell>
+                <StyledTableCell align="center">{element.city}</StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.state}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.country}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {element.pinCode}
+                </StyledTableCell>
+                <StyledTableCell align="right" xs={4}>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => deleteFun(element.locationId, fetchData)}
+                    sx={{ mr: 2 }}
+                  >
+                    <DeleteIcon />
+                  </Button>
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  <Button
+                    variant="contained"
+                    className="text-black bg-info"
+                    onClick={() => updateFun(element.locationId)}
+                    sx={{ mr: 1 }}
+                  >
+                    <EditIcon />
+                  </Button>
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
               <TableCell colSpan={6} />
@@ -153,9 +182,15 @@ export default function DataTabel({
         <TableFooter>
           <TableRow>
             <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+              rowsPerPageOptions={[
+                5,
+                10,
+                25,
+                50,
+                { label: "All", value: dataLength },
+              ]}
               colSpan={12}
-              count={locationData.length}
+              count={dataLength}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
