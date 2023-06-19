@@ -18,11 +18,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../TokenDetails/AuthContext";
 import acitveLogo from "../images/on-button.png";
 import inacitveLogo from "../images/off-button.png";
-import { lightGreen, pink, orange, red, green } from "@mui/material/colors";
-import { createTheme } from "@mui/material/styles";
 import axios from "axios";
 import { useEffect } from "react";
-import { log } from "util";
 
 // const redTheme = createTheme({ palette: { primary: green } });
 // const orangeTheme = createTheme({
@@ -214,6 +211,7 @@ export default function ItemTabel({
                   <Button
                     variant="contained"
                     className="bg-info text-black"
+                    data-testid="updateBtn"
                     onClick={() => updateFun(element.itemId)}
                     sx={{ mr: 1, p: 1 }}
                   >
@@ -222,6 +220,7 @@ export default function ItemTabel({
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   <Button
+                    data-testid="delete-icon"
                     variant="contained"
                     color="error"
                     onClick={() => deleteFun(element.itemId, fetchData)}

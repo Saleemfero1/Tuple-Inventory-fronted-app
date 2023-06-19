@@ -8,7 +8,7 @@ Chart.register([Tooltip]);
 Chart.register(ArcElement);
 
 export default function ChartData(props) {
-  const { digg, setDigg } = useContext(AuthContext);
+  // const { digg, setDigg } = useContext(AuthContext);
   const options = {
     plugins: {
       legend: {

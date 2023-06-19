@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import "../Item/Item.css";
 import { useEffect, useState } from "react";
 import { City, Country, State } from "country-state-city";
-import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 import LocationServices from "../../Service/LocationServices";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,7 +54,7 @@ export default function AddLocation() {
       pinCode: location.pinCode,
     };
 
-    if (id == -1) {
+    if (id === "-1") {
       LocationServices.createLocation(
         sessionStorage.getItem("organizationId"),
         newLocation,
@@ -84,7 +83,7 @@ export default function AddLocation() {
   };
 
   useEffect(() => {
-    if (id == -1) {
+    if (id === "-1") {
       return;
     } else {
       LocationServices.getLocationByLocationId(
@@ -96,7 +95,7 @@ export default function AddLocation() {
         setLocation(existLocation);
       });
     }
-  }, []);
+  }, [id, token]);
 
   const onChangeLocationId = (event) => {
     setLocation({ ...location, locationId: event.target.value });
@@ -171,7 +170,7 @@ export default function AddLocation() {
                 type="text"
                 className="form-control"
                 id="Description"
-                placeholder="Enter Item Description"
+                placeholder="Enter Location Description"
                 required
                 value={location.locationDesc}
                 onChange={onChangeLocationDesc}
@@ -180,24 +179,24 @@ export default function AddLocation() {
           </div>
           <div className=" row mb-3">
             <div className="form-group col-md-6">
-              <label htmlFor="itemType">Type</label>
+              <label htmlFor="locationType">Type</label>
               <input
                 type="text"
                 className="form-control "
-                id="locType"
-                placeholder="Enter Item Type"
+                id="locationType"
+                placeholder="Enter Location Type"
                 required
                 value={location.locationType}
                 onChange={onChangeLocationType}
               />
             </div>
             <div className="form-group col-md-6">
-              <label htmlFor="addressl1">Address Line 1</label>
+              <label htmlFor="addressLine1">Address Line 1</label>
               <input
                 type="text"
                 className="form-control "
-                id="adress1"
-                placeholder="Enter Adress Line 1"
+                id="addressLine1"
+                placeholder="Enter Address Line 1"
                 required
                 value={location.addressLine1}
                 onChange={onChangeAddressLine1}
@@ -207,24 +206,24 @@ export default function AddLocation() {
 
           <div className=" row mb-3">
             <div className="form-group col-md-6">
-              <label htmlFor="addressl2">Address Line 2</label>
+              <label htmlFor="addressLine2">Address Line 2</label>
               <input
                 type="text"
                 className="form-control "
-                id="address2"
-                placeholder="Enter Adress Line 2"
+                id="addressLine2"
+                placeholder="Enter Address Line 2"
                 required
                 value={location.addressLine2}
                 onChange={onChangeAddressLine2}
               />
             </div>
             <div className="form-group col-md-6">
-              <label htmlFor="addressl1">Address Line 3</label>
+              <label htmlFor="addressLine3">Address Line 3</label>
               <input
                 type="text"
                 className="form-control"
-                id="address3"
-                placeholder="Enter Adress Line 3"
+                id="addressLine3"
+                placeholder="Enter Address Line 3"
                 value={location.addressLine3}
                 onChange={onChangeAddressLine3}
               />
@@ -349,7 +348,7 @@ export default function AddLocation() {
             type="submit"
             sx={{ mt: 2 }}
           >
-            {id == -1 ? "Add Location" : "Update Location"}
+            {id === "-1" ? "Add Location" : "Update Location"}
           </Button>
           <Button
             variant="contained"

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Footer from "./Footer";
+import Footer from "../Component/Footer/Footer";
 
 describe("Footer", () => {
   test("renders copyright information", () => {
@@ -8,8 +8,8 @@ describe("Footer", () => {
 
     const currentYear = new Date().getFullYear();
     const expectedText = `© ${currentYear} Tuple Inventory Management. All rights reserved.`;
-    const copyElement = screen.getByText(expectedText);
+    Element = screen.getByText(expectedText);
 
-    expect(copyElement).toBeInTheDocument();
+    expect(Element).toBeInTheDocument();
   });
 });

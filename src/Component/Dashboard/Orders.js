@@ -55,7 +55,7 @@ export default function Orders() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Title>
         <b> Global Availability Of Items</b>
       </Title>
@@ -116,6 +116,6 @@ export default function Orders() {
           />
         </TableFooter>
       </Table>
-    </React.Fragment>
+    </>
   );
 }

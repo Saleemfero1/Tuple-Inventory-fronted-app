@@ -43,7 +43,7 @@ exports[`AddLocation should match the snapshot 1`] = `
             class="form-control"
             data-testid="Description"
             id="Description"
-            placeholder="Enter Item Description"
+            placeholder="Enter Location Description"
             required=""
             type="text"
             value=""
@@ -57,14 +57,14 @@ exports[`AddLocation should match the snapshot 1`] = `
           class="form-group col-md-6"
         >
           <label
-            for="itemType"
+            for="locationType"
           >
             Type
           </label>
           <input
             class="form-control "
-            id="locType"
-            placeholder="Enter Item Type"
+            id="locationType"
+            placeholder="Enter Location Type"
             required=""
             type="text"
             value=""
@@ -74,14 +74,14 @@ exports[`AddLocation should match the snapshot 1`] = `
           class="form-group col-md-6"
         >
           <label
-            for="addressl1"
+            for="addressLine1"
           >
             Address Line 1
           </label>
           <input
             class="form-control "
-            id="adress1"
-            placeholder="Enter Adress Line 1"
+            id="addressLine1"
+            placeholder="Enter Address Line 1"
             required=""
             type="text"
             value=""
@@ -95,14 +95,14 @@ exports[`AddLocation should match the snapshot 1`] = `
           class="form-group col-md-6"
         >
           <label
-            for="addressl2"
+            for="addressLine2"
           >
             Address Line 2
           </label>
           <input
             class="form-control "
-            id="address2"
-            placeholder="Enter Adress Line 2"
+            id="addressLine2"
+            placeholder="Enter Address Line 2"
             required=""
             type="text"
             value=""
@@ -112,14 +112,14 @@ exports[`AddLocation should match the snapshot 1`] = `
           class="form-group col-md-6"
         >
           <label
-            for="addressl1"
+            for="addressLine3"
           >
             Address Line 3
           </label>
           <input
             class="form-control"
-            id="address3"
-            placeholder="Enter Adress Line 3"
+            id="addressLine3"
+            placeholder="Enter Address Line 3"
             type="text"
             value=""
           />
@@ -1513,7 +1513,7 @@ exports[`AddLocation should match the snapshot 1`] = `
         </div>
       </div>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium css-1u0dfaj-MuiButtonBase-root-MuiButton-root"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium bg-info text-black css-lll1vm-MuiButtonBase-root-MuiButton-root"
         tabindex="0"
         type="submit"
       >

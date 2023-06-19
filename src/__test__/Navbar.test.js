@@ -1,11 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import Navbar from "./Navbar";
-import { AuthContext } from "../../TokenDetails/AuthContext";
-import { AuthProvider } from "../../TokenDetails/AuthContext";
+import Navbar from "../Component/Navbar/Navbar";
+import { AuthContext } from "../TokenDetails/AuthContext";
+import { AuthProvider } from "../TokenDetails/AuthContext";
 import "@testing-library/jest-dom/extend-expect";
-
 describe("Navbar", () => {
   test("renders Navbar with 'Home' link when not authenticated", () => {
     render(

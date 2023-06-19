@@ -3,6 +3,7 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 
 export default function AlertBox(props) {
+  const [open, setOpen] = React.useState(true);
   return (
     <Alert
       action={

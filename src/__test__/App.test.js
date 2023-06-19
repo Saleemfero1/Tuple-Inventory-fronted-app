@@ -1,20 +1,19 @@
 import React from "react";
-import { screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { AuthProvider } from "../../TokenDetails/AuthContext";
+import { AuthProvider } from "../TokenDetails/AuthContext";
 import { MemoryRouter } from "react-router-dom";
-import Register from "./Register";
+import App from "../App";
 
 it("renders correctly", () => {
+  const mockToken = "mock_token";
   const treeOne = renderer
     .create(
       <AuthProvider>
         <MemoryRouter>
-          <Register />
+          <App />
         </MemoryRouter>
       </AuthProvider>
     )
     .toJSON();
-  expect(screen.getAllByTestId("userName")).toBeInTheDocument();
   expect(treeOne).toMatchSnapshot();
 });

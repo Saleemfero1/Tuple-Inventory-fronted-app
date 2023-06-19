@@ -128,7 +128,7 @@ export default function SignIn() {
               }}
             >
               <Avatar sx={{ m: 1, bgcolor: "#6a7ae4" }}>
-                <LockOutlinedIcon />
+                <LockOutlinedIcon data-testid="LockOutlinedIcon" />
               </Avatar>
               <Typography component="h1" variant="h5" data-testid="Signin">
                 Sign in

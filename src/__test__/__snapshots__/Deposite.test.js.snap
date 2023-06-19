@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deposits renders correctly 1`] = `
+<div>
+  <h2
+    className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-1dxy5kq-MuiTypography-root"
+  >
+    <span
+      className="ms-2"
+    >
+      <img
+        alt=""
+        src="/#"
+        width={30}
+      />
+    </span>
+    <span
+      className="textOfBox"
+    >
+      Heading 1/Heading 2
+    </span>
+  </h2>
+  <h4
+    className="MuiTypography-root MuiTypography-h4 ps-2 css-5lbw0b-MuiTypography-root"
+  >
+    10/20
+  </h4>
+  <div
+    className="row justify-content-center"
+  >
+    <div
+      className="col-10"
+    >
+      <div>
+        <div
+          onClick={[Function]}
+        >
+          <div>
+            <canvas
+              height={150}
+              role="img"
+              width={300}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

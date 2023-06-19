@@ -20,7 +20,7 @@ exports[`renders correctly 1`] = `
           <img
             alt=""
             className="me-2"
-            src="supply-chain.png"
+            src="logo.png"
             width={50}
           />
           <span
@@ -84,7 +84,7 @@ exports[`renders correctly 1`] = `
               <a
                 aria-current="page"
                 className="nav-link active"
-                href="/"
+                href="/aboutus"
                 onClick={[Function]}
               >
                 About Us
@@ -230,7 +230,7 @@ exports[`renders correctly 1`] = `
       className="row from-right"
     >
       <div
-        className="homeInfo"
+        className="homeInfo "
       >
         <h1
           className="tuple-in"
@@ -297,6 +297,21 @@ exports[`renders correctly 1`] = `
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div
+    className="bg-dark mt-3"
+  >
+    <div
+      className="row"
+    >
+      <span
+        className=" copy-info"
+      >
+        © 
+        2023
+         Tuple Inventory Management. All rights reserved.
+      </span>
     </div>
   </div>
 </div>

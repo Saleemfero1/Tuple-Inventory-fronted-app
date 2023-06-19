@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Item.css";
 import ItemServices from "../../Service/ItemServices";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import ItemTable from "./ItemTable";
 import { AuthContext } from "../../TokenDetails/AuthContext";
-import TextField from "@mui/material/TextField";
-import { Padding } from "@mui/icons-material";
-import Box from "@mui/material/Box";
+
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Items(props) {
@@ -66,17 +64,6 @@ export default function Items(props) {
     } else {
       console.log("no item found");
     }
-    // ItemServices.getItemByItemId(
-    //   sessionStorage.getItem("organizationId"),
-    //   itemId,
-    //   token
-    // )
-    //   .then((response) => {
-    //     navigate(`/item/additem?id=${itemId}`);
-    //   })
-    //   .catch((error) => {
-    //     alert(error);
-    //   });
   };
 
   return (
@@ -89,10 +76,10 @@ export default function Items(props) {
 
       <div className="row mb-3">
         <div className="col-6">
-          <div class="col-md-6">
+          <div className="col-md-6">
             <input
               type="text"
-              class="search form-control"
+              className="search form-control"
               placeholder="Search Item By Name"
               onChange={handleSearch}
             />

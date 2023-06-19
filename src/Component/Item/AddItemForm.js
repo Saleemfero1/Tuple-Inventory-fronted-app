@@ -135,7 +135,7 @@ export default function AddItemForm() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" data-testid="add-item-form">
       <ToastContainer position="bottom-left" />
       <form className="mt-3 p-3 shadow addItems" onSubmit={saveItem}>
         <div className=" row mb-3">
@@ -144,7 +144,7 @@ export default function AddItemForm() {
             <input
               type="text"
               className="form-control"
-              id=""
+              id="itemId"
               placeholder="Enter Item Id"
               value={item.itemId}
               onChange={onChangeItemId}
@@ -171,7 +171,7 @@ export default function AddItemForm() {
             <input
               type="text"
               className="form-control mb-3"
-              id=""
+              id="itemDesc"
               placeholder="Enter Item Description"
               value={item.itemDescription}
               onChange={onChangeItemDesc}
@@ -239,7 +239,7 @@ export default function AddItemForm() {
             </label>
             <input
               type="checkbox"
-              id="deliver"
+              id="deliveryAllowed"
               name="deliveryAllowed"
               onChange={onChangeDelivery}
             />
@@ -249,8 +249,9 @@ export default function AddItemForm() {
               Pickup Allowed
             </label>
             <input
+              placeholder="pickup"
               type="checkbox"
-              id="pickup"
+              id="pickupAllowed"
               name="pickupAllowed"
               onChange={onChangePickup}
             />
@@ -261,7 +262,7 @@ export default function AddItemForm() {
             </label>
             <input
               type="checkbox"
-              id="shipping"
+              id="shippingAllowed"
               name="shippingAllowed"
               defaultChecked={item.shippingAllowed}
               onChange={onChangeShipping}

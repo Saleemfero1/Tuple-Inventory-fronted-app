@@ -5,7 +5,12 @@ import "../Home.css";
 export default function AboutUs() {
   return (
     <div className="container">
-      <Paper elevation={3} style={{ padding: "20px" }} sx={{ mt: 5 }}>
+      <Paper
+        elevation={3}
+        style={{ padding: "20px" }}
+        sx={{ mt: 5 }}
+        data-testid="head"
+      >
         <Typography variant="h4" gutterBottom className="text-center">
           About <span className="I">T</span>uple <span className="I">I</span>
           nventory <span className="I">M</span>anagement

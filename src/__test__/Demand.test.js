@@ -1,8 +1,39 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import AddDemand from "./AddDemand";
-import { AuthContext } from "../../TokenDetails/AuthContext";
+import AddDemand from "../Component/Demand/AddDemand";
+import { AuthContext, AuthProvider } from "../TokenDetails/AuthContext";
 import { MemoryRouter } from "react-router-dom";
+import Demand from "../Component/Demand/Demand";
+
+describe("render demand component ", () => {
+  it("render demand page correctly", () => {
+    render(
+      <MemoryRouter>
+        <AuthProvider>
+          <Demand />
+        </AuthProvider>
+      </MemoryRouter>
+    );
+  });
+
+  it("render demand with data", () => {
+    render(
+      <MemoryRouter>
+        <AuthProvider>
+          <Demand />
+        </AuthProvider>
+      </MemoryRouter>
+    );
+
+    expect(
+      screen.getByRole("button", { name: /add demand/i })
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("button", { name: /add demand/i })
+    ).toBeInTheDocument();
+  });
+});
 
 describe("AddDemand", () => {
   const mockNavigate = jest.fn();

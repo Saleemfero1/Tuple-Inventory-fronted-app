@@ -63,6 +63,7 @@ export default function Register() {
 
   const onChangePassword = (event) => {
     setUser({ ...user, password: event.target.value });
+    <Register />;
   };
 
   // Validation Methods
@@ -175,8 +176,9 @@ export default function Register() {
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <TextField
-                      data-testid="userName"
+                      data-testid="username"
                       autoComplete="given-name"
+                      placeholder="User Name"
                       name="username"
                       required
                       fullWidth
@@ -193,6 +195,7 @@ export default function Register() {
                       required
                       fullWidth
                       id="email"
+                      placeholder="Email Address"
                       label="Email Address"
                       name="email"
                       autoComplete="email"
@@ -204,6 +207,7 @@ export default function Register() {
                     <TextField
                       required
                       fullWidth
+                      placeholder="Organization Id"
                       id="organizationId"
                       label="Organization Id"
                       name="OrganizationId"
@@ -217,6 +221,7 @@ export default function Register() {
                       required
                       fullWidth
                       name="password"
+                      placeholder="Password"
                       label="Password"
                       type="password"
                       id="password"
