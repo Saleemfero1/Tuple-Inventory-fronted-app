@@ -9,6 +9,7 @@ import { AuthContext } from "../../TokenDetails/AuthContext";
 import Select from "react-select";
 import { Button } from "@mui/material";
 
+
 export default function AddSupply() {
   const { token } = useContext(AuthContext);
   const queryParameters = new URLSearchParams(window.location.search);
@@ -54,9 +55,7 @@ export default function AddSupply() {
         token
       )
         .then((response) => {
-          toast.success("Supply created!", {
-            onClose: () => navigate("/supply"),
-          });
+          navigate("/supply", { state: { supplyCreated: true } });
         })
         .catch((err) => {
           toast.error(err.response.data.message);
@@ -69,9 +68,7 @@ export default function AddSupply() {
         token
       )
         .then((response) => {
-          toast.success("Supply updated!", {
-            onClose: () => navigate("/supply"),
-          });
+          navigate("/supply", { state: { supplyUpdated: true } });
         })
         .catch((err) => {
           alert(err);
@@ -132,12 +129,17 @@ export default function AddSupply() {
   return (
     <div className="container mt-5">
       <ToastContainer position="bottom-left" />
-      <form className="mt-3 p-3 shadow addItems" onSubmit={saveSupply}>
+      <form
+        className="mt-3 p-3 shadow addItems"
+        onSubmit={saveSupply}
+        data-testid="add-supply-form"
+      >
         <div class=" row mb-3">
           <div class="form-group col-md-6">
             <label for="itemId">Select Item</label>
             <Select
-              placeholder="Serach item"
+              data-testid="selectItem"
+              placeholder={id == -1 ? "Serach item" : supply.itemId}
               options={optionItems}
               value={supply.itemId["itemId"]}
               onChange={onChangeItemId}
@@ -146,7 +148,8 @@ export default function AddSupply() {
           <div class="form-group col-md-6">
             <label for="LocationId">Location Id</label>
             <Select
-              placeholder="Serach location"
+              data-testid="selectLocation"
+              placeholder={id == -1 ? "Search location" : supply.locationId}
               options={optionLocations}
               value={supply.locationId["locationId"]}
               onChange={onChangeLocationId}

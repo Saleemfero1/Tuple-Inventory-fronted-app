@@ -1,29 +1,29 @@
 import React from "react";
 import { screen, render, fireEvent, getByRole } from "@testing-library/react";
 import ItemTable from "../Component/Item/ItemTable";
-import { AuthProvider } from "../TokenDetails/AuthContext";
-import EditIcon from "@mui/icons-material/Edit";
+import { AuthContext, AuthProvider } from "../TokenDetails/AuthContext";
 
 describe("ItemTable", () => {
   const headings = ["ID", "Name", "Description", "Category", "Type", "Price"];
-  const itemData = [
-    {
-      itemId: 1,
-      itemName: "Item 1",
-      itemDescription: "Description 1",
-      category: "Category 1",
-      type: "Type 1",
-      status: true,
-      price: 10,
-    },
-    // Add more test data as needed
-  ];
-  const deleteFun = jest.fn();
-  const updateFun = jest.fn();
-  const search = "";
+  const itemData = {
+    itemId: "ORG001_002",
+    itemName: "slim fit jeans",
+    itemDescription: "Stretchable, black",
+    category: "Men",
+    type: "Jeans",
+    price: 2000.0,
+    status: true,
+    pickupAllowed: true,
+    shippingAllowed: false,
+    deliveryAllowed: false,
+    organizationId: "ORG001",
+  };
 
   test("displays the correct table data", () => {
-    const { getByText } = render(
+    const deleteFun = jest.fn();
+    const updateFun = jest.fn();
+    const search = "";
+    render(
       <AuthProvider>
         <ItemTable
           headings={headings}
@@ -34,12 +34,9 @@ describe("ItemTable", () => {
         />
       </AuthProvider>
     );
-
-    // // Check if the table headings are rendered correctly
-    // headings.forEach((heading) => {
-    //   expect(getByText(heading)).toBeInTheDocument();
-    // });
-
+    // const editItem = container.querySelector(
+    //   "#root > div > div:nth-child(2) > div:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(9) > button > svg > path"
+    // );
     // // Check if the table rows are rendered correctly
     // itemData.forEach((item) => {
     //   expect(getByText(item.itemId.toString())).toBeInTheDocument();

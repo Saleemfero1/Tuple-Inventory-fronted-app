@@ -62,9 +62,7 @@ export default function AddItemForm() {
         token
       )
         .then((response) => {
-          toast.success("Item Created", {
-            onClose: () => navigate("/item"),
-          });
+          navigate("/item", { state: { itemCreated: true } });
         })
         .catch((err) => {
           toast.error(err.response.data.message);
@@ -77,9 +75,7 @@ export default function AddItemForm() {
         token
       )
         .then((response) => {
-          toast.success("Item updated!", {
-            onClose: () => navigate("/item"),
-          });
+          navigate("/item", { state: { itemUpdated: true } });
         })
         .catch((err) => {
           toast.error(err.response.data.message);
@@ -105,8 +101,9 @@ export default function AddItemForm() {
   const onChangeStatus = (event) => {
     setItem({ ...item, itemstatus: event.target.value });
   };
+
   const onChangePickup = (event) => {
-    var pickup = document.getElementById("pickup");
+    var pickup = document.getElementById("pickupAllowed");
     if (pickup.checked) {
       setItem({ ...item, pickupAllowed: true });
     } else {
@@ -114,7 +111,7 @@ export default function AddItemForm() {
     }
   };
   const onChangeShipping = (event) => {
-    var shipping = document.getElementById("shipping");
+    var shipping = document.getElementById("shippingAllowed");
     if (shipping.checked) {
       setItem({ ...item, shippingAllowed: true });
     } else {
@@ -122,7 +119,7 @@ export default function AddItemForm() {
     }
   };
   const onChangeDelivery = (event) => {
-    var deliver = document.getElementById("deliver");
+    var deliver = document.getElementById("deliveryAllowed");
     if (deliver.checked) {
       setItem({ ...item, deliveryAllowed: true });
     } else {
@@ -136,7 +133,6 @@ export default function AddItemForm() {
 
   return (
     <div className="container mt-5" data-testid="add-item-form">
-      <ToastContainer position="bottom-left" />
       <form className="mt-3 p-3 shadow addItems" onSubmit={saveItem}>
         <div className=" row mb-3">
           <div className="form-group col-md-6">

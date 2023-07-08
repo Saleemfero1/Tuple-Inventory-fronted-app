@@ -3,7 +3,7 @@
 exports[`renders correctly 1`] = `
 <div>
   <div
-    className="sticky-top"
+    className="sticky-top mx-auto"
     data-testid="navTest"
   >
     <nav

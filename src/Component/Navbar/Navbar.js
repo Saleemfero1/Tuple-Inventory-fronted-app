@@ -11,7 +11,7 @@ export default function Navbar() {
   const { token } = useContext(AuthContext);
 
   return (
-    <div className="sticky-top" data-testid="navTest">
+    <div className="sticky-top mx-auto" data-testid="navTest">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link
@@ -19,7 +19,7 @@ export default function Navbar() {
             to={token ? "/dashboard" : "/"}
           >
             <img src={LogoImage} alt="" width={50} className="me-2" />
-            <span className="firstLetter">T</span>uple
+            <span className="firstLetter">S</span>phinx
             <span className="firstLetter">I</span>nventory
             <span className="firstLetter"> M</span>anagement
           </Link>
@@ -88,6 +88,55 @@ export default function Navbar() {
                   <Link className="nav-link" to="transaction">
                     Transaction
                   </Link>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarScrollingDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Analysis
+                  </a>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarScrollingDropdown"
+                  >
+                    <li>
+                      <Link class="dropdown-item" to="past">
+                        Past Data
+                      </Link>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+
+                    <li>
+                      <Link class="dropdown-item" to="pre">
+                        Predicted Data
+                      </Link>
+                    </li>
+
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+
+                    <li>
+                      <Link class="dropdown-item" to="line">
+                        Graph
+                      </Link>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                      <Link class="dropdown-item" to="region">
+                        Region Based Data
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             )}

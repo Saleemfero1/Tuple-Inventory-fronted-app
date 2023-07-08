@@ -71,7 +71,6 @@ export default function DemandTable({
       setData(response.data.content);
       setDataLength(response.data.totalElements);
     } catch (error) {
-      console("errror hai bhai");
       console.error(error);
     }
   };

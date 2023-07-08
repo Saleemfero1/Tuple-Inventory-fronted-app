@@ -7,9 +7,17 @@ import { Button } from "@mui/material";
 import DemandTable from "./DemandTable";
 import { AuthContext } from "../../TokenDetails/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
-
+import { useLocation } from "react-router-dom";
 export default function Demand() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { demandUpdated, demandCreated } = location.state || {};
+
+  useEffect(() => {
+    if (demandUpdated || demandCreated) {
+      toast.success(`Demand ${demandCreated ? "Created" : "Updated"}`);
+    }
+  }, [demandUpdated]);
   const [search, setSearch] = useState("");
   const { token, demandData, setDemandData } = useContext(AuthContext);
   const headings = [
@@ -54,13 +62,11 @@ export default function Demand() {
     const object = demandData.find((obj) => obj.id === demandId);
     if (object != undefined) {
       navigate(`/demand/add?id=${demandId}`);
-    } else {
-      console.log("demand  not found");
     }
   };
 
   return (
-    <>
+    <div>
       <ToastContainer position="bottom-left" />
       <div className="container" data-testid="demand">
         <div className=" mt-3">
@@ -100,6 +106,6 @@ export default function Demand() {
           search={search}
         />
       </div>
-    </>
+    </div>
   );
 }

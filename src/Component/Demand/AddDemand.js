@@ -35,7 +35,6 @@ export default function AddDemand() {
       )
         .then((response) => {
           let existDemand = response.data;
-          console.log(existDemand);
           setDemand(existDemand);
         })
         .catch((err) => {
@@ -61,7 +60,6 @@ export default function AddDemand() {
     )
       .then((response) => {
         setLocations(response.data);
-        console.log(locations);
       })
       .catch((err) => {
         console.log(err);
@@ -88,22 +86,18 @@ export default function AddDemand() {
     };
 
     if (id == -1) {
-      console.log(newDemand);
       DemandServices.createDemand(
         sessionStorage.getItem("organizationId"),
         newDemand,
         sessionStorage.getItem("token")
       )
         .then((response) => {
-          toast.success("demand Created!", {
-            onClose: () => navigate("/demand"),
-          });
+          navigate("/demand", { state: { demandCreated: true } });
         })
         .catch((err) => {
           toast.error(err.response.data.message);
         });
     } else {
-      console.log(newDemand);
       DemandServices.updateDemand(
         sessionStorage.getItem("organizationId"),
         id,
@@ -111,9 +105,7 @@ export default function AddDemand() {
         token
       )
         .then((response) => {
-          toast.success("demand updated!", {
-            onClose: () => navigate("/demand"),
-          });
+          navigate("/demand", { state: { demandUpdated: true } });
         })
         .catch((err) => {
           toast.error(err.response.data.message);
@@ -151,7 +143,7 @@ export default function AddDemand() {
               Select Item
             </label>
             <Select
-              placeholder="Search item"
+              placeholder={id == -1 ? "Search item" : demand.itemId}
               options={optionItems}
               value={demand.itemId["itemId"]}
               onChange={onChangeItemId}
@@ -162,7 +154,7 @@ export default function AddDemand() {
               Location Id
             </label>
             <Select
-              placeholder="Serach location"
+              placeholder={id == -1 ? "Serach location" : demand.locationId}
               options={optionLocations}
               value={demand.locationId["locationId"]}
               onChange={onChangeLocationId}

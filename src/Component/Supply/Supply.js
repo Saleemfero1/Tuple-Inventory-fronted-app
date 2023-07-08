@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../TokenDetails/AuthContext";
+import { useLocation } from "react-router-dom";
 
 export default function Supply() {
   const { token, supplyData, setSupplyData } = useContext(AuthContext);
@@ -19,7 +20,14 @@ export default function Supply() {
     "Quantity",
   ];
   const navigate = useNavigate();
+  const location = useLocation();
+  const { supplyUpdated, supplyCreated } = location.state || {};
 
+  useEffect(() => {
+    if (supplyUpdated || supplyCreated) {
+      toast.success(`Supply ${supplyCreated ? "Created" : "Updated"}`);
+    }
+  }, [supplyUpdated]);
   useEffect(() => {
     SupplyServices.getSupply(sessionStorage.getItem("organizationId"), token)
       .then((response) => {
@@ -51,8 +59,6 @@ export default function Supply() {
     const object = supplyData.find((obj) => obj.id === supplyId);
     if (object !== undefined) {
       navigate(`/supply/addsupply?id=${supplyId}`);
-    } else {
-      console.log("supply  not found");
     }
   };
 

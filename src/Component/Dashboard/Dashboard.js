@@ -106,8 +106,8 @@ export default function Dashboard() {
     },
     {
       heading: "Items Demand",
-      heading2: "Rest Of Items Demand",
-      heading5: "Top Two Items Demand",
+      heading2: "Rest Of Items",
+      heading5: "Top Two Items",
       heading6: "Total Demand",
       num: TrendingItems.totalDemandOfTopTenItems,
       num2: TrendingItems.getTotalDemandOfOtherItems,
@@ -228,7 +228,7 @@ export default function Dashboard() {
                 <Grid item xs={12} md={6} lg={3}>
                   <Paper
                     sx={{
-                      backgroundColor: detail.backgroundColor,
+                      backgroundColor: "",
                       p: 2,
                       display: "flex",
                       flexDirection: "column",

@@ -28,7 +28,7 @@ export default function Deposits(props) {
           {props.num2 ? props.num1 + "/" + props.num2 : props.num1}
         </Typography>
         <div className="row justify-content-center">
-          <div className="col-10">
+          <div className="col-10 justify-content-end">
             <FullScreenDialog
               heading1={props.heading1}
               heading2={props.heading2 ? props.heading2 : null}

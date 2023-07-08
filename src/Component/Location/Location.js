@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { AuthContext } from "../../TokenDetails/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
 export default function Location() {
   const [search, setSearch] = React.useState("");
@@ -31,6 +32,14 @@ export default function Location() {
     "PinCode",
   ];
   const navigate = useNavigate();
+  const location = useLocation();
+  const { locationUpdated, locationCreated } = location.state || {};
+
+  useEffect(() => {
+    if (locationUpdated || locationCreated) {
+      toast.success(`Location ${locationCreated ? "Created" : "Updated"}`);
+    }
+  }, [locationUpdated]);
 
   useEffect(() => {
     LocationServices.getLocations(
@@ -57,7 +66,7 @@ export default function Location() {
           toast.success("Location deleted");
         })
         .catch((error) => {
-          console.log(error);
+          toast.error(error.response.data.message);
         });
     }
   };
@@ -66,8 +75,6 @@ export default function Location() {
     const object = locationData.find((obj) => obj.locationId === locationId);
     if (object !== undefined) {
       navigate(`/location/add?id=${locationId}`);
-    } else {
-      console.log("location not found");
     }
   };
 

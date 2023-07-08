@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders AddDemand component correctly 1`] = `
+exports[`test cases for Add Demand renders AddDemand component correctly 1`] = `
 <form
   class="mt-3 p-3 shadow addItems"
   data-testid="add-demand-form"
@@ -39,9 +39,7 @@ exports[`renders AddDemand component correctly 1`] = `
             <div
               class=" css-1jqq78o-placeholder"
               id="react-select-2-placeholder"
-            >
-              Search item
-            </div>
+            />
             <div
               class=" css-d9r47t-Component"
               data-value=""
@@ -123,9 +121,7 @@ exports[`renders AddDemand component correctly 1`] = `
             <div
               class=" css-1jqq78o-placeholder"
               id="react-select-3-placeholder"
-            >
-              Serach location
-            </div>
+            />
             <div
               class=" css-d9r47t-Component"
               data-value=""

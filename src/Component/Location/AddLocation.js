@@ -60,9 +60,7 @@ export default function AddLocation() {
         newLocation,
         token
       ).then((response) => {
-        toast.success("Location Created!", {
-          onClose: () => navigate("/location"),
-        });
+        navigate("/location", { state: { locationCreated: true } });
       });
     } else {
       LocationServices.updateLocation(
@@ -72,9 +70,7 @@ export default function AddLocation() {
         token
       )
         .then((response) => {
-          toast.success("Location updated!", {
-            onClose: () => navigate("/location"),
-          });
+          navigate("/location", { state: { locationUpdated: true } });
         })
         .catch((err) => {
           toast.error(err);
@@ -95,7 +91,7 @@ export default function AddLocation() {
         setLocation(existLocation);
       });
     }
-  }, [id, token]);
+  }, [id]);
 
   const onChangeLocationId = (event) => {
     setLocation({ ...location, locationId: event.target.value });
@@ -121,7 +117,7 @@ export default function AddLocation() {
   };
 
   const onChangePickup = (event) => {
-    var pickup = document.getElementById("pickup");
+    var pickup = document.getElementById("pickupAllowed");
     if (pickup.checked) {
       setLocation({ ...location, pickupAllowed: true });
     } else {
@@ -129,7 +125,7 @@ export default function AddLocation() {
     }
   };
   const onChangeShipping = (event) => {
-    var shipping = document.getElementById("shipping");
+    var shipping = document.getElementById("shippingAllowed");
     if (shipping.checked) {
       setLocation({ ...location, shippingAllowed: true });
     } else {
@@ -137,7 +133,7 @@ export default function AddLocation() {
     }
   };
   const onChangeDelivery = (event) => {
-    var deliver = document.getElementById("deliver");
+    var deliver = document.getElementById("deliveryAllowed");
     if (deliver.checked) {
       setLocation({ ...location, deliveryAllowed: true });
     } else {
@@ -194,7 +190,7 @@ export default function AddLocation() {
               <label htmlFor="addressLine1">Address Line 1</label>
               <input
                 type="text"
-                className="form-control "
+                className="form-control"
                 id="addressLine1"
                 placeholder="Enter Address Line 1"
                 required
@@ -302,13 +298,12 @@ export default function AddLocation() {
 
           <div className="form-row row mt-3">
             <div className="form-group col-md-3">
-              <label htmlFor="shippingAllowed" className="me-4">
+              <label htmlFor="deliveryAllowed" className="me-4">
                 Delivery Allowed
               </label>
               <input
                 type="checkbox"
-                className="inset-shadow"
-                id="deliver"
+                id="deliveryAllowed"
                 name="deliveryAllowed"
                 value={location.deliveryAllowed}
                 onChange={onChangeDelivery}
@@ -320,8 +315,7 @@ export default function AddLocation() {
               </label>
               <input
                 type="checkbox"
-                className=""
-                id="pickup"
+                id="pickupAllowed"
                 name="pickupAllowed"
                 value={location.pickupAllowed}
                 onChange={onChangePickup}
@@ -333,8 +327,7 @@ export default function AddLocation() {
               </label>
               <input
                 type="checkbox"
-                className=""
-                id="shipping"
+                id="shippingAllowed"
                 name="shippingAllowed"
                 value={location.shippingAllowed}
                 onChange={onChangeShipping}

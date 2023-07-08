@@ -44,7 +44,6 @@ describe("DataTable", () => {
         search={search}
       />
     );
-
     // // Click on the delete button of the first row
     // const deleteButton = screen.getAllByRole("button", {
     //   locationDesc: "Delete",

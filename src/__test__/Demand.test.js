@@ -29,9 +29,8 @@ describe("render demand component ", () => {
       screen.getByRole("button", { name: /add demand/i })
     ).toBeInTheDocument();
 
-    expect(
-      screen.getByRole("button", { name: /add demand/i })
-    ).toBeInTheDocument();
+    const addBtn = screen.getByRole("button", { name: /add demand/i });
+    fireEvent.click(addBtn);
   });
 });
 

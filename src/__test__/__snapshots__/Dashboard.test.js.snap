@@ -45,7 +45,7 @@ exports[`Dashboard renders correctly 1`] = `
                 className="row justify-content-center"
               >
                 <div
-                  className="col-10"
+                  className="col-10 justify-content-end"
                 >
                   <div>
                     <div
@@ -97,7 +97,7 @@ exports[`Dashboard renders correctly 1`] = `
                 className="row justify-content-center"
               >
                 <div
-                  className="col-10"
+                  className="col-10 justify-content-end"
                 >
                   <div>
                     <div
@@ -149,7 +149,7 @@ exports[`Dashboard renders correctly 1`] = `
                 className="row justify-content-center"
               >
                 <div
-                  className="col-10"
+                  className="col-10 justify-content-end"
                 >
                   <div>
                     <div
@@ -201,7 +201,7 @@ exports[`Dashboard renders correctly 1`] = `
                 className="row justify-content-center"
               >
                 <div
-                  className="col-10"
+                  className="col-10 justify-content-end"
                 >
                   <div>
                     <div
@@ -234,294 +234,299 @@ exports[`Dashboard renders correctly 1`] = `
                  Global Availability Of Items
               </b>
             </h2>
-            <table
-              aria-label="customized table"
-              className="MuiTable-root css-1pclhgl-MuiTable-root"
-              role={null}
+            <div
+              className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiTableContainer-root css-11xur9t-MuiPaper-root-MuiTableContainer-root"
             >
-              <thead
-                className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+              <table
+                aria-label="customized table"
+                className="MuiTable-root css-1pclhgl-MuiTable-root"
                 role={null}
               >
-                <tr
-                  className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+                <thead
+                  className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
                   role={null}
                 >
-                  <th
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1wvnaxz-MuiTableCell-root"
-                    scope="col"
-                    style={
-                      Object {
-                        "fontSize": "17px",
-                      }
-                    }
+                  <tr
+                    className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+                    role={null}
                   >
-                    Item Name
-                     
-                  </th>
-                  <th
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1wvnaxz-MuiTableCell-root"
-                    scope="col"
-                    style={
-                      Object {
-                        "fontSize": "17px",
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1wvnaxz-MuiTableCell-root"
+                      scope="col"
+                      style={
+                        Object {
+                          "fontSize": "17px",
+                        }
                       }
-                    }
-                  >
-                    Total Supply
-                  </th>
-                  <th
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1wvnaxz-MuiTableCell-root"
-                    scope="col"
-                    style={
-                      Object {
-                        "fontSize": "17px",
+                    >
+                      Item Name
+                       
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1wvnaxz-MuiTableCell-root"
+                      scope="col"
+                      style={
+                        Object {
+                          "fontSize": "17px",
+                        }
                       }
-                    }
-                  >
-                    Total Demand
-                  </th>
-                  <th
-                    aria-sort={null}
-                    className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
-                    scope="col"
-                    style={
-                      Object {
-                        "fontSize": "17px",
+                    >
+                      Total Supply
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1wvnaxz-MuiTableCell-root"
+                      scope="col"
+                      style={
+                        Object {
+                          "fontSize": "17px",
+                        }
                       }
-                    }
-                  >
-                    Available Quantity
-                  </th>
-                </tr>
-              </thead>
-              <tbody
-                className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
-                role={null}
-              />
-              <tfoot
-                className="MuiTableFooter-root css-9cgc89-MuiTableFooter-root"
-                role={null}
-              >
-                <td
-                  aria-sort={null}
-                  className="MuiTableCell-root MuiTableCell-footer MuiTableCell-sizeMedium MuiTablePagination-root css-fikjyc-MuiTableCell-root-MuiTablePagination-root"
-                  colSpan={12}
+                    >
+                      Total Demand
+                    </th>
+                    <th
+                      aria-sort={null}
+                      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+                      scope="col"
+                      style={
+                        Object {
+                          "fontSize": "17px",
+                        }
+                      }
+                    >
+                      Available Quantity
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+                  role={null}
+                />
+                <tfoot
+                  className="MuiTableFooter-root css-9cgc89-MuiTableFooter-root"
+                  role={null}
                 >
-                  <div
-                    className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar"
+                  <td
+                    aria-sort={null}
+                    className="MuiTableCell-root MuiTableCell-footer MuiTableCell-sizeMedium MuiTablePagination-root css-fikjyc-MuiTableCell-root-MuiTablePagination-root"
+                    colSpan={12}
                   >
                     <div
-                      className="MuiTablePagination-spacer css-1psng7p-MuiTablePagination-spacer"
-                    />
-                    <p
-                      className="MuiTablePagination-selectLabel css-pdct74-MuiTablePagination-selectLabel"
-                      id=":r5:"
+                      className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar"
                     >
-                      Rows per page:
-                    </p>
-                    <div
-                      className="MuiInputBase-root MuiInputBase-colorPrimary css-16c50h-MuiInputBase-root-MuiTablePagination-select"
-                      onClick={[Function]}
-                    >
-                      <select
-                        aria-label="rows per page"
-                        className="MuiNativeSelect-select MuiTablePagination-select MuiNativeSelect-standard MuiInputBase-input css-m3l1ig-MuiNativeSelect-select-MuiInputBase-input"
-                        id=":r4:"
-                        multiple={false}
-                        onAnimationStart={[Function]}
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        value={5}
+                      <div
+                        className="MuiTablePagination-spacer css-1psng7p-MuiTablePagination-spacer"
+                      />
+                      <p
+                        className="MuiTablePagination-selectLabel css-pdct74-MuiTablePagination-selectLabel"
+                        id=":r5:"
                       >
-                        <option
-                          className="MuiTablePagination-menuItem"
+                        Rows per page:
+                      </p>
+                      <div
+                        className="MuiInputBase-root MuiInputBase-colorPrimary css-16c50h-MuiInputBase-root-MuiTablePagination-select"
+                        onClick={[Function]}
+                      >
+                        <select
+                          aria-label="rows per page"
+                          className="MuiNativeSelect-select MuiTablePagination-select MuiNativeSelect-standard MuiInputBase-input css-m3l1ig-MuiNativeSelect-select-MuiInputBase-input"
+                          id=":r4:"
+                          multiple={false}
+                          onAnimationStart={[Function]}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
                           value={5}
                         >
-                          5
-                        </option>
-                        <option
-                          className="MuiTablePagination-menuItem"
-                          value={10}
+                          <option
+                            className="MuiTablePagination-menuItem"
+                            value={5}
+                          >
+                            5
+                          </option>
+                          <option
+                            className="MuiTablePagination-menuItem"
+                            value={10}
+                          >
+                            10
+                          </option>
+                          <option
+                            className="MuiTablePagination-menuItem"
+                            value={25}
+                          >
+                            25
+                          </option>
+                          <option
+                            className="MuiTablePagination-menuItem"
+                            value={50}
+                          >
+                            50
+                          </option>
+                          <option
+                            className="MuiTablePagination-menuItem"
+                            value={-1}
+                          >
+                            All
+                          </option>
+                        </select>
+                        <svg
+                          aria-hidden={true}
+                          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiTablePagination-selectIcon MuiNativeSelect-iconStandard css-10bey84-MuiSvgIcon-root-MuiNativeSelect-icon"
+                          data-testid="ArrowDropDownIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
                         >
-                          10
-                        </option>
-                        <option
-                          className="MuiTablePagination-menuItem"
-                          value={25}
-                        >
-                          25
-                        </option>
-                        <option
-                          className="MuiTablePagination-menuItem"
-                          value={50}
-                        >
-                          50
-                        </option>
-                        <option
-                          className="MuiTablePagination-menuItem"
-                          value={-1}
-                        >
-                          All
-                        </option>
-                      </select>
-                      <svg
-                        aria-hidden={true}
-                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiTablePagination-selectIcon MuiNativeSelect-iconStandard css-10bey84-MuiSvgIcon-root-MuiNativeSelect-icon"
-                        data-testid="ArrowDropDownIcon"
-                        focusable="false"
-                        viewBox="0 0 24 24"
+                          <path
+                            d="M7 10l5 5 5-5z"
+                          />
+                        </svg>
+                      </div>
+                      <p
+                        className="MuiTablePagination-displayedRows css-levciy-MuiTablePagination-displayedRows"
                       >
-                        <path
-                          d="M7 10l5 5 5-5z"
-                        />
-                      </svg>
+                        0–0 of 0
+                      </p>
+                      <div
+                        className="MuiBox-root css-1zye22"
+                        data-testid="pagination"
+                      >
+                        <button
+                          aria-label="first page"
+                          className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                          disabled={true}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onContextMenu={[Function]}
+                          onDragLeave={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchMove={[Function]}
+                          onTouchStart={[Function]}
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden={true}
+                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                            data-testid="FirstPageIcon"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M18.41 16.59 13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
+                            />
+                          </svg>
+                        </button>
+                        <button
+                          aria-label="previous page"
+                          className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                          disabled={true}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onContextMenu={[Function]}
+                          onDragLeave={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchMove={[Function]}
+                          onTouchStart={[Function]}
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden={true}
+                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                            data-testid="KeyboardArrowLeftIcon"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
+                            />
+                          </svg>
+                        </button>
+                        <button
+                          aria-label="next page"
+                          className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                          disabled={true}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onContextMenu={[Function]}
+                          onDragLeave={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchMove={[Function]}
+                          onTouchStart={[Function]}
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden={true}
+                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                            data-testid="KeyboardArrowRightIcon"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+                            />
+                          </svg>
+                        </button>
+                        <button
+                          aria-label="last page"
+                          className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+                          disabled={true}
+                          onBlur={[Function]}
+                          onClick={[Function]}
+                          onContextMenu={[Function]}
+                          onDragLeave={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
+                          onMouseDown={[Function]}
+                          onMouseLeave={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchMove={[Function]}
+                          onTouchStart={[Function]}
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          <svg
+                            aria-hidden={true}
+                            className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                            data-testid="LastPageIcon"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M5.59 7.41 10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
-                    <p
-                      className="MuiTablePagination-displayedRows css-levciy-MuiTablePagination-displayedRows"
-                    >
-                      0–0 of 0
-                    </p>
-                    <div
-                      className="MuiBox-root css-1zye22"
-                    >
-                      <button
-                        aria-label="first page"
-                        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-                        disabled={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onDragLeave={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onKeyUp={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchMove={[Function]}
-                        onTouchStart={[Function]}
-                        tabIndex={-1}
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden={true}
-                          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                          data-testid="FirstPageIcon"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M18.41 16.59 13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z"
-                          />
-                        </svg>
-                      </button>
-                      <button
-                        aria-label="previous page"
-                        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-                        disabled={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onDragLeave={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onKeyUp={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchMove={[Function]}
-                        onTouchStart={[Function]}
-                        tabIndex={-1}
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden={true}
-                          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                          data-testid="KeyboardArrowLeftIcon"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
-                          />
-                        </svg>
-                      </button>
-                      <button
-                        aria-label="next page"
-                        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-                        disabled={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onDragLeave={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onKeyUp={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchMove={[Function]}
-                        onTouchStart={[Function]}
-                        tabIndex={-1}
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden={true}
-                          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                          data-testid="KeyboardArrowRightIcon"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
-                          />
-                        </svg>
-                      </button>
-                      <button
-                        aria-label="last page"
-                        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-                        disabled={true}
-                        onBlur={[Function]}
-                        onClick={[Function]}
-                        onContextMenu={[Function]}
-                        onDragLeave={[Function]}
-                        onFocus={[Function]}
-                        onKeyDown={[Function]}
-                        onKeyUp={[Function]}
-                        onMouseDown={[Function]}
-                        onMouseLeave={[Function]}
-                        onMouseUp={[Function]}
-                        onTouchEnd={[Function]}
-                        onTouchMove={[Function]}
-                        onTouchStart={[Function]}
-                        tabIndex={-1}
-                        type="button"
-                      >
-                        <svg
-                          aria-hidden={true}
-                          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                          data-testid="LastPageIcon"
-                          focusable="false"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            d="M5.59 7.41 10.18 12l-4.59 4.59L7 18l6-6-6-6zM16 6h2v12h-2z"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </td>
-              </tfoot>
-            </table>
+                  </td>
+                </tfoot>
+              </table>
+            </div>
           </div>
         </div>
       </div>

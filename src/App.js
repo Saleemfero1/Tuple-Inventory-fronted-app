@@ -22,6 +22,10 @@ import OrganizationRegister from "./Component/Authentication/OrganizationRegiste
 import TransactionTable from "./Component/Transaction/Transactions";
 import ChartData from "./Component/Chart/ChartData";
 import AboutUs from "./Component/Chart/AboutUs";
+import PredictedData from "./Analysis/PredictedData";
+import PastData from "./Analysis/PastData";
+import DataLine from "./Analysis/DataLine";
+import RegionBasedData from "./Analysis/RegionBasedDemand";
 function App() {
   return (
     <div>
@@ -170,6 +174,42 @@ function App() {
           element={
             <PrivateRoute>
               <TransactionTable />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/past"
+          element={
+            <PrivateRoute>
+              <PastData />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/pre"
+          element={
+            <PrivateRoute>
+              <PredictedData />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/line"
+          element={
+            <PrivateRoute>
+              <DataLine />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/region"
+          element={
+            <PrivateRoute>
+              <RegionBasedData />
             </PrivateRoute>
           }
         />

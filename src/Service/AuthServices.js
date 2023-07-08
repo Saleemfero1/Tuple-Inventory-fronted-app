@@ -15,9 +15,12 @@ class AuthServices {
     return axios.post(SIGNIN_USER_BASE_URL, user);
   }
 
+  /*
+  this api only for multi-tenant
   registerOrganization(organization) {
     return axios.post(REGISTER_ORG_BASE_URL, organization);
   }
+  */
 
   findUserByName(username) {
     return axios.get(FIND_USER_BY_NAME_URL + username);

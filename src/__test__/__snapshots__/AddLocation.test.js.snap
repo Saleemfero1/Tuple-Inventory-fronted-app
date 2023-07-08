@@ -79,7 +79,7 @@ exports[`AddLocation should match the snapshot 1`] = `
             Address Line 1
           </label>
           <input
-            class="form-control "
+            class="form-control"
             id="addressLine1"
             placeholder="Enter Address Line 1"
             required=""
@@ -1465,13 +1465,12 @@ exports[`AddLocation should match the snapshot 1`] = `
         >
           <label
             class="me-4"
-            for="shippingAllowed"
+            for="deliveryAllowed"
           >
             Delivery Allowed
           </label>
           <input
-            class="inset-shadow"
-            id="deliver"
+            id="deliveryAllowed"
             name="deliveryAllowed"
             type="checkbox"
             value="false"
@@ -1487,8 +1486,7 @@ exports[`AddLocation should match the snapshot 1`] = `
             Pickup Allowed
           </label>
           <input
-            class=""
-            id="pickup"
+            id="pickupAllowed"
             name="pickupAllowed"
             type="checkbox"
             value="false"
@@ -1504,8 +1502,7 @@ exports[`AddLocation should match the snapshot 1`] = `
             Shipping Allowed
           </label>
           <input
-            class=""
-            id="shipping"
+            id="shippingAllowed"
             name="shippingAllowed"
             type="checkbox"
             value="false"

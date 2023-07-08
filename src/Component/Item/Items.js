@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import "./Item.css";
 import ItemServices from "../../Service/ItemServices";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import ItemTable from "./ItemTable";
@@ -25,6 +25,14 @@ export default function Items(props) {
   ];
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const { itemUpdated, itemCreated } = location.state || {};
+
+  useEffect(() => {
+    if (itemUpdated || itemCreated) {
+      toast.success(`Item ${itemCreated ? "Created" : "Updated"}`);
+    }
+  }, [itemUpdated]);
 
   useEffect(() => {
     ItemServices.getItems(sessionStorage.getItem("organizationId"), token)
@@ -61,8 +69,6 @@ export default function Items(props) {
     const object = itemData.find((obj) => obj.itemId === itemId);
     if (object !== undefined) {
       navigate(`/item/additem?id=${itemId}`);
-    } else {
-      console.log("no item found");
     }
   };
 
@@ -73,7 +79,6 @@ export default function Items(props) {
           Items Details
         </h3>
       </div>
-
       <div className="row mb-3">
         <div className="col-6">
           <div className="col-md-6">

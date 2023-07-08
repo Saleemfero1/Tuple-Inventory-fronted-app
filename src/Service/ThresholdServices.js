@@ -44,7 +44,7 @@ class ThresholdServices {
 
   updateThreshold(organizationId, thresholdId, threshold, token) {
     return axios.patch(
-      THRESHOLD_DETAILS_BASE_URL + organizationId + "/" + thresholdId,
+      THRESHOLD_DETAILS_BASE_URL + "v1/" + organizationId + "/" + thresholdId,
       threshold,
       {
         headers: {

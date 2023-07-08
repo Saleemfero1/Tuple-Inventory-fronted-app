@@ -36,22 +36,8 @@ export default function () {
                 </Link>
               </div>
             </div>
-
-            {/* Organization Register button */}
-            {/* <div className="row">
-              <div className="col-sm-12">
-                <Link type="button" class="btn  home-buttons" to="/register">
-                  Register your organization
-                </Link>
-              </div>
-            </div> */}
           </div>
         </div>
-
-        {/* Last Inventory logo pink color */}
-        {/* <div className="col-lg-6 col-md-7   ">
-          <img src={InventoryLogo} alt="Inventory logo" className="bg-img" />
-        </div> */}
       </div>
       <Footer />
     </>

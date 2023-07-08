@@ -98,7 +98,7 @@ export default function FullScreenDialog(props) {
               {/* Upper table of model */}
               <TableContainer
                 component={Paper}
-                sx={{ maxWidth: 500 }}
+                sx={{ maxWidth: 500, border: 1 }}
                 size="small"
                 className="m-auto"
               >
@@ -109,32 +109,33 @@ export default function FullScreenDialog(props) {
                 >
                   <TableBody>
                     <TableRow>
-                      <TableCell align="left" sx={{ fontSize: 30 }}>
+                      <TableCell align="left" sx={{ fontSize: 20 }}>
                         {props.heading5 ? props.heading5 : props.heading1}
                       </TableCell>
-                      <TableCell align="right" sx={{ fontSize: 30 }}>
+                      <TableCell align="right" sx={{ fontSize: 20 }}>
                         {props.num1}
                       </TableCell>
                     </TableRow>
 
-                    {/* if box has multiple headings2 & 3  */}
-                    {(props.heading2 || props.heading6) && (
+                    {props.heading3 && (
                       <TableRow>
-                        <TableCell align="left" sx={{ fontSize: 30 }}>
-                          {props.heading2 ? props.heading2 : props.heading6}
+                        <TableCell align="left" sx={{ fontSize: 20 }}>
+                          {props.heading3}
                         </TableCell>
-                        <TableCell align="right" sx={{ fontSize: 30 }}>
-                          {props.num2}
+                        <TableCell align="right" sx={{ fontSize: 20 }}>
+                          {props.num5 ? props.num5 : props.num3}
                         </TableCell>
                       </TableRow>
                     )}
-                    {props.heading3 && (
+
+                    {/* if box has multiple headings2 & 3  */}
+                    {(props.heading2 || props.heading6) && (
                       <TableRow>
-                        <TableCell align="left" sx={{ fontSize: 30 }}>
-                          {props.heading3}
+                        <TableCell align="left" sx={{ fontSize: 20 }}>
+                          {props.heading2 ? props.heading2 : props.heading6}
                         </TableCell>
-                        <TableCell align="right" sx={{ fontSize: 30 }}>
-                          {props.num5 ? props.num5 : props.num3}
+                        <TableCell align="right" sx={{ fontSize: 20 }}>
+                          {props.num2}
                         </TableCell>
                       </TableRow>
                     )}

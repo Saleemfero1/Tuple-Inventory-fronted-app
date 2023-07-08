@@ -83,9 +83,7 @@ export default function AddThreshold() {
         token
       )
         .then((response) => {
-          toast.success("Threshold Created!", {
-            onClose: () => navigate("/threshold"),
-          });
+          navigate("/threshold", { state: { thresholdCreated: true } });
         })
         .catch((err) => {
           toast.error(err.response.data.message, {
@@ -100,9 +98,7 @@ export default function AddThreshold() {
         token
       )
         .then((response) => {
-          toast.success("Threshold updated!", {
-            onClose: () => navigate("/threshold"),
-          });
+          navigate("/threshold", { state: { thresholdUpdated: true } });
         })
         .catch((err) => {
           toast.error("threshold not found", {
@@ -143,19 +139,20 @@ export default function AddThreshold() {
       <form className="mt-3 p-3 shadow addItems" onSubmit={saveThreshold}>
         <div class=" row mb-3">
           <div class="form-group col-md-6">
-            <label for="itemId">Select Item</label>
-
+            <label htmlFor="itemId">Select Item</label>
             <Select
-              placeholder="Serach item"
+              id="itemId"
+              placeholder={id == -1 ? "Serach item" : threshold.itemId}
               options={optionItems}
               value={threshold.itemId["itemId"]}
               onChange={onChangeItemId}
             ></Select>
           </div>
           <div class="form-group col-md-6">
-            <label for="LocationId">Location Id</label>
+            <label htmlFor="LocationId">Location Id</label>
             <Select
-              placeholder="Serach location"
+              id="LocationId"
+              placeholder={id == -1 ? "Serach location" : threshold.locationId}
               options={optionLocations}
               value={threshold.locationId["locationId"]}
               onChange={onChangeLocationId}
@@ -164,23 +161,23 @@ export default function AddThreshold() {
         </div>
         <div className="row">
           <div class="form-group col-md-6">
-            <label for="minThreshold">Minimum Threshold</label>
+            <label htmlFor="minThreshold">Minimum Threshold</label>
             <input
               type="text"
               class="form-control "
               id="minThreshold"
-              placeholder="ie.10"
+              placeholder="Minimum threshold"
               value={threshold.minThreshold}
               onChange={onChangeMinThreshold}
             />
           </div>
           <div class="form-group col-md-6">
-            <label for="maxThreshold">Maximum Threshold</label>
+            <label htmlFor="maxThreshold">Maximum Threshold</label>
             <input
               type="text"
               class="form-control "
               id="maxThreshold"
-              placeholder="ie.100"
+              placeholder="Maximum threshold"
               value={threshold.maxThreshold}
               onChange={onChangeMaxThreshold}
             />

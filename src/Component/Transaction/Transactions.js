@@ -47,7 +47,7 @@ export default function TransactionTable() {
   //pagination Api
   useEffect(() => {
     fetchData();
-  }, [rowsPerPage, page, setData]);
+  }, [rowsPerPage, page]);
 
   const fetchData = async () => {
     try {
@@ -67,7 +67,7 @@ export default function TransactionTable() {
       setData(response.data.content);
       setDataLength(response.data.totalElements);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 

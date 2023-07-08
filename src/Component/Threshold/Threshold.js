@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import ThresholdTable from "./ThresholdTable";
 import { AuthContext } from "../../TokenDetails/AuthContext";
+import { useLocation } from "react-router-dom";
 
 export default function Threshold() {
   const [search, setSearch] = React.useState("");
@@ -19,6 +20,14 @@ export default function Threshold() {
   ];
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const { thresholdUpdated, thresholdCreated } = location.state || {};
+
+  useEffect(() => {
+    if (thresholdUpdated || thresholdCreated) {
+      toast.success(`Threshold ${thresholdCreated ? "Created" : "Updated"}`);
+    }
+  }, [thresholdUpdated]);
 
   useEffect(() => {
     ThresholdServices.getThreshold(
@@ -58,8 +67,6 @@ export default function Threshold() {
     const object = thresholdData.find((obj) => obj.id === thresholdId);
     if (object !== undefined) {
       navigate(`/threshold/add?id=${thresholdId}`);
-    } else {
-      console.log("threshold  not found");
     }
   };
 

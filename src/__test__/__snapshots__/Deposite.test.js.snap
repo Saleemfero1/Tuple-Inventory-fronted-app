@@ -29,7 +29,7 @@ exports[`Deposits renders correctly 1`] = `
     className="row justify-content-center"
   >
     <div
-      className="col-10"
+      className="col-10 justify-content-end"
     >
       <div>
         <div

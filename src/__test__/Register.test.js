@@ -22,7 +22,6 @@ describe("Register component", () => {
 
     expect(screen.getByPlaceholderText("User Name")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Email Address")).toBeInTheDocument();
-    expect(screen.getByPlaceholderText("Organization Id")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Password")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sign Up" })).toBeInTheDocument();
   });
@@ -40,20 +39,17 @@ describe("Register component", () => {
     );
     const usernameInput = screen.getByPlaceholderText("User Name");
     const emailInput = screen.getByPlaceholderText("Email Address");
-    const organizationIdInput = screen.getByPlaceholderText("Organization Id");
     const passwordInput = screen.getByPlaceholderText("Password");
     const signUpButton = screen.getByRole("button", { name: "Sign Up" });
 
     fireEvent.change(usernameInput, { target: { value: "JohnDoe" } });
     fireEvent.change(emailInput, { target: { value: "john.doe@example.com" } });
-    fireEvent.change(organizationIdInput, { target: { value: "org123" } });
     fireEvent.change(passwordInput, { target: { value: "password123" } });
     fireEvent.click(signUpButton);
 
     expect(AuthServices.registerUser).toHaveBeenCalledWith({
       username: "JohnDoe",
       userEmail: "john.doe@example.com",
-      organizationId: "org123",
       password: "password123",
     });
 

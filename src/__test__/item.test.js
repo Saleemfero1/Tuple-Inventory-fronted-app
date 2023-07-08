@@ -47,26 +47,7 @@ describe("Items", () => {
     expect(getByText("Category")).toBeInTheDocument();
     expect(getByText("Type")).toBeInTheDocument();
     expect(getByText("Price")).toBeInTheDocument();
-
-    // Mock deleteItem function
-    const deleteItem = jest.fn();
-
-    // // Check if deleteItem function is called when delete button is clicked
-    // deleteButtons.forEach((button) => {
-    //   fireEvent.click(button);
-    // });
-
-    // expect(deleteItem).toHaveBeenCalledTimes(deleteButtons.length);
-
-    // // Mock updateItem function
-    // const updateItem = jest.fn();
-    // const updateButtons = getAllByRole("button", { name: "Update" });
-
-    // // Check if updateItem function is called when update button is clicked
-    // updateButtons.forEach((button) => {
-    //   fireEvent.click(button);
-    // });
-
-    // expect(updateItem).toHaveBeenCalledTimes(updateButtons.length);
   });
 });
+
+/////////////////////////////////////////////////////////////////////////////

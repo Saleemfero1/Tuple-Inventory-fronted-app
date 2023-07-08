@@ -10,6 +10,8 @@ import { AuthContext } from "../../TokenDetails/AuthContext";
 import TableFooter from "@mui/material/TableFooter";
 import TablePagination from "@mui/material/TablePagination";
 import TablePaginationActions from "../Table/TablePaginationActions";
+import { TableContainer } from "@mui/material";
+import Paper from "@mui/material/Paper";
 
 function preventDefault(event) {
   event.preventDefault();
@@ -59,63 +61,69 @@ export default function Orders() {
       <Title>
         <b> Global Availability Of Items</b>
       </Title>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell style={{ fontSize: "17px" }}>
-              Item Name{" "}
-            </StyledTableCell>
-            <StyledTableCell style={{ fontSize: "17px" }}>
-              Total Supply
-            </StyledTableCell>
-            <StyledTableCell style={{ fontSize: "17px" }}>
-              Total Demand
-            </StyledTableCell>
-            <StyledTableCell align="right" style={{ fontSize: "17px" }}>
-              Available Quantity
-            </StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {(rowsPerPage > 0
-            ? dashData.slice(
-                page * rowsPerPage,
-                page * rowsPerPage + rowsPerPage
-              )
-            : dashData
-          ).map((element) => (
-            <StyledTableRow key={element.itemId}>
-              <StyledTableCell>{element.itemId}</StyledTableCell>
-              <StyledTableCell>{element.totalSupply}</StyledTableCell>
-              <StyledTableCell>{element.totalDemand}</StyledTableCell>
-              <StyledTableCell align="right">{`${element.availableQty}`}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell style={{ fontSize: "17px" }}>
+                Item Name{" "}
+              </StyledTableCell>
+              <StyledTableCell align="right" style={{ fontSize: "17px" }}>
+                Total Supply
+              </StyledTableCell>
+              <StyledTableCell align="right" style={{ fontSize: "17px" }}>
+                Total Demand
+              </StyledTableCell>
+              <StyledTableCell align="right" style={{ fontSize: "17px" }}>
+                Available Quantity
+              </StyledTableCell>
             </TableRow>
-          )}
-        </TableBody>
-        <TableFooter>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25, 50, { label: "All", value: -1 }]}
-            colSpan={12}
-            count={dashData.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            SelectProps={{
-              inputProps: {
-                "aria-label": "rows per page",
-              },
-              native: true,
-            }}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-            ActionsComponent={TablePaginationActions}
-          />
-        </TableFooter>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {(rowsPerPage > 0
+              ? dashData.slice(
+                  page * rowsPerPage,
+                  page * rowsPerPage + rowsPerPage
+                )
+              : dashData
+            ).map((element) => (
+              <StyledTableRow key={element.itemId}>
+                <StyledTableCell>{element.itemId}</StyledTableCell>
+                <StyledTableCell align="right">
+                  {element.totalSupply}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  {element.totalDemand}
+                </StyledTableCell>
+                <StyledTableCell align="right">{`${element.availableQty}`}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <TableCell colSpan={6} />
+              </TableRow>
+            )}
+          </TableBody>
+          <TableFooter>
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25, 50, { label: "All", value: -1 }]}
+              colSpan={12}
+              count={dashData.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: {
+                  "aria-label": "rows per page",
+                },
+                native: true,
+              }}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              ActionsComponent={TablePaginationActions}
+            />
+          </TableFooter>
+        </Table>
+      </TableContainer>
     </>
   );
 }

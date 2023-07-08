@@ -21,11 +21,6 @@ import inacitveLogo from "../images/off-button.png";
 import axios from "axios";
 import { useEffect } from "react";
 
-// const redTheme = createTheme({ palette: { primary: green } });
-// const orangeTheme = createTheme({
-//   palette: { primary: red },
-// });
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -46,18 +41,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function ItemTabel({
-  headings,
-  itemData,
-  deleteFun,
-  updateFun,
-  search,
-}) {
+export default function ItemTabel({ headings, deleteFun, updateFun, search }) {
   const [data, setData] = React.useState([]); //pagination api
-
   const [dataLength, setDataLength] = React.useState(0);
   const { setItemData } = React.useContext(AuthContext);
-  const [existItem, setExistItem] = React.useState(null);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -142,7 +129,7 @@ export default function ItemTabel({
 
   return (
     <TableContainer component={Paper}>
-      <ToastContainer position="bottom-left"></ToastContainer>
+      <ToastContainer position="bottom-left" autoClose={2000}></ToastContainer>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -220,7 +207,7 @@ export default function ItemTabel({
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   <Button
-                    data-testid="delete-icon"
+                    data-testid="deleteicon"
                     variant="contained"
                     color="error"
                     onClick={() => deleteFun(element.itemId, fetchData)}
