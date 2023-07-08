@@ -1,7 +1,7 @@
 {
   "name": "inventory-app",
   "version": "0.1.0",
-  "homepage": "https://Saleemfero1.github.io/Sphinx-Inventory-fronted-app",
+  "homepage": "https://Saleemfero1.github.io/",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^2.1.0",
