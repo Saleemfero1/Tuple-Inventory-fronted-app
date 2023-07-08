@@ -21,7 +21,9 @@ export default function Navbar() {
             <img src={LogoImage} alt="" width={50} className="me-2" />
             <span className="firstLetter">S</span>phinx
             <span className="firstLetter">I</span>nventory
-            <span className="firstLetter"> M</span>anagement
+            <span>
+              <span className="firstLetter"> M</span>anagement
+            </span>
           </Link>
           <button
             className="navbar-toggler"
@@ -41,7 +43,11 @@ export default function Navbar() {
             {!token && (
               <ul className="navbar-nav mb-2 mb-lg-0 ">
                 <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="/">
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="/Sphinx-Inventory-fronted-app"
+                  >
                     Home
                   </Link>
                 </li>

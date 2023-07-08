@@ -52,3 +52,6 @@ border: none;
     border-radius: 4px;
     box-shadow: 1px 1px 10px rgb(185, 184, 184);
 }
+.handle{
+    visibility: hidden;
+}
