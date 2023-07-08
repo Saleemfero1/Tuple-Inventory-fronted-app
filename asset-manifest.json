@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.604157ef.css",
-    "main.js": "/static/js/main.9cdb871e.js",
-    "static/js/787.718c5e08.chunk.js": "/static/js/787.718c5e08.chunk.js",
-    "static/media/bg2.jpg": "/static/media/bg2.24075cf2d00aa27eb4e8.jpg",
-    "static/media/bg.jpg": "/static/media/bg.7c6f5526545fa47aa597.jpg",
-    "static/media/user1.png": "/static/media/user1.8cc5ea4dd8f645cd00cc.png",
-    "static/media/stock.png": "/static/media/stock.3543fd4d7a22cc2afec6.png",
-    "static/media/outStock.png": "/static/media/outStock.dcadad917ecea9bde57f.png",
-    "static/media/logo.png": "/static/media/logo.83e2f70f4e1ea481adf2.png",
-    "static/media/on-button.png": "/static/media/on-button.b32ed76770083472be2a.png",
-    "static/media/off-button.png": "/static/media/off-button.9bf895f0705e192e4789.png",
-    "static/media/trend.png": "/static/media/trend.5e8d50d7e7ef7363cbe5.png",
-    "static/media/activeItem.png": "/static/media/activeItem.7348ed835ebe1161426e.png",
-    "index.html": "/index.html",
-    "main.604157ef.css.map": "/static/css/main.604157ef.css.map",
-    "main.9cdb871e.js.map": "/static/js/main.9cdb871e.js.map",
-    "787.718c5e08.chunk.js.map": "/static/js/787.718c5e08.chunk.js.map"
+    "main.css": "/Sphinx-Inventory-fronted-app/static/css/main.e8483737.css",
+    "main.js": "/Sphinx-Inventory-fronted-app/static/js/main.6861a5ec.js",
+    "static/js/787.718c5e08.chunk.js": "/Sphinx-Inventory-fronted-app/static/js/787.718c5e08.chunk.js",
+    "static/media/bg2.jpg": "/Sphinx-Inventory-fronted-app/static/media/bg2.24075cf2d00aa27eb4e8.jpg",
+    "static/media/bg.jpg": "/Sphinx-Inventory-fronted-app/static/media/bg.7c6f5526545fa47aa597.jpg",
+    "static/media/user1.png": "/Sphinx-Inventory-fronted-app/static/media/user1.8cc5ea4dd8f645cd00cc.png",
+    "static/media/stock.png": "/Sphinx-Inventory-fronted-app/static/media/stock.3543fd4d7a22cc2afec6.png",
+    "static/media/outStock.png": "/Sphinx-Inventory-fronted-app/static/media/outStock.dcadad917ecea9bde57f.png",
+    "static/media/logo.png": "/Sphinx-Inventory-fronted-app/static/media/logo.83e2f70f4e1ea481adf2.png",
+    "static/media/on-button.png": "/Sphinx-Inventory-fronted-app/static/media/on-button.b32ed76770083472be2a.png",
+    "static/media/off-button.png": "/Sphinx-Inventory-fronted-app/static/media/off-button.9bf895f0705e192e4789.png",
+    "static/media/trend.png": "/Sphinx-Inventory-fronted-app/static/media/trend.5e8d50d7e7ef7363cbe5.png",
+    "static/media/activeItem.png": "/Sphinx-Inventory-fronted-app/static/media/activeItem.7348ed835ebe1161426e.png",
+    "index.html": "/Sphinx-Inventory-fronted-app/index.html",
+    "main.e8483737.css.map": "/Sphinx-Inventory-fronted-app/static/css/main.e8483737.css.map",
+    "main.6861a5ec.js.map": "/Sphinx-Inventory-fronted-app/static/js/main.6861a5ec.js.map",
+    "787.718c5e08.chunk.js.map": "/Sphinx-Inventory-fronted-app/static/js/787.718c5e08.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.604157ef.css",
-    "static/js/main.9cdb871e.js"
+    "static/css/main.e8483737.css",
+    "static/js/main.6861a5ec.js"
   ]
 }
