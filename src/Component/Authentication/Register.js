@@ -42,7 +42,7 @@ export default function Register() {
   const [user, setUser] = useState({
     username: "",
     userEmail: "",
-    // organizationId: "",
+    organizationId: "",
     password: "",
   });
   const [alertBox, setAlertBox] = useState(false);
@@ -57,9 +57,9 @@ export default function Register() {
     setUser({ ...user, userEmail: event.target.value });
   };
 
-  // const onChangeOrganizationId = (event) => {
-  //   setUser({ ...user, organizationId: event.target.value });
-  // };
+  const onChangeOrganizationId = (event) => {
+    setUser({ ...user, organizationId: event.target.value });
+  };
 
   const onChangePassword = (event) => {
     setUser({ ...user, password: event.target.value });
@@ -101,11 +101,11 @@ export default function Register() {
       return;
     }
 
-    // if (user.organizationId.trim() === "") {
-    //   setAlertMessage("Please enter your OrganizationId.");
-    //   setAlertBox(true);
-    //   return;
-    // }
+    if (user.organizationId.trim() === "") {
+      setAlertMessage("Please enter your OrganizationId.");
+      setAlertBox(true);
+      return;
+    }
 
     if (user.password.trim() === "") {
       setAlertMessage("Please enter your password.");
@@ -203,7 +203,7 @@ export default function Register() {
                       onChange={onChangeUserEmail}
                     />
                   </Grid>
-                  {/* <Grid item xs={12}>
+                  <Grid item xs={12}>
                     <TextField
                       required
                       fullWidth
@@ -215,7 +215,7 @@ export default function Register() {
                       value={user.organizationId}
                       onChange={onChangeOrganizationId}
                     />
-                  </Grid> */}
+                  </Grid>
                   <Grid item xs={12}>
                     <TextField
                       required

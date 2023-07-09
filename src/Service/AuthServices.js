@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { AuthContext } from "../TokenDetails/AuthContext";
 import axios from "axios";
 const REGISTER_USER_BASE_URL = "http://localhost:1111/api/auth/register";
 const SIGNIN_USER_BASE_URL = "http://localhost:1111/api/auth/login";

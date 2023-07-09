@@ -10,7 +10,7 @@ export default function () {
         <div className="row from-right">
           <div className="homeInfo ">
             <h1 className="tuple-in" data-testid="tuple-inventory">
-              <span className="I">T</span>uple <span className="I">I</span>
+              <span className="I">S</span>phinx <span className="I">I</span>
               nventory
             </h1>
             <h1 className="manage">
@@ -32,7 +32,7 @@ export default function () {
               </div>
               <div className="col-sm-6">
                 <Link type="button " className="btn  home-buttons" to="/signin">
-                  SignIn
+                  LogIn
                 </Link>
               </div>
             </div>

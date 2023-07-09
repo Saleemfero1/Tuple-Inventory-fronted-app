@@ -1,5 +1,4 @@
 import React from "react";
-import PastDataTable from "./PastDataTable";
 import BarCharData from "./BarChartForPastData";
 import { useState, useEffect } from "react";
 import RegionBasedDataTable from "./RegionBasedDataTable";

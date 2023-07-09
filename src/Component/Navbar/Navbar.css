@@ -55,3 +55,7 @@ border: none;
 .handle{
     visibility: hidden;
 }
+.imageSphinx{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}

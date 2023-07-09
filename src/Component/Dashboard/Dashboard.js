@@ -160,6 +160,7 @@ export default function Dashboard() {
             sessionStorage.getItem("token")
           )
             .then((response) => {
+              console.log(response.data);
               setDigg(response.data);
             })
             .catch((err) => {

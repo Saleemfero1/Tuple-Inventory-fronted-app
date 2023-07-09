@@ -6,6 +6,7 @@ import { AuthContext } from "../../TokenDetails/AuthContext";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import LogoImage from "../images/logo.png";
+import Sphinx from "../images/Sphinx.png";
 export default function Navbar() {
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
@@ -18,12 +19,9 @@ export default function Navbar() {
             className="navbar-brand ms-3 me-5"
             to={token ? "/dashboard" : "/"}
           >
-            <img src={LogoImage} alt="" width={50} className="me-2" />
+            <img src={Sphinx} alt="" width={50} className="me-2 imageSphinx" />
             <span className="firstLetter">S</span>phinx
-            <span className="firstLetter">I</span>nventory
-            <span>
-              <span className="firstLetter"> M</span>anagement
-            </span>
+            <span className="firstLetter"> I</span>nventory
           </Link>
           <button
             className="navbar-toggler"
@@ -184,13 +182,22 @@ export default function Navbar() {
               </span>
             )}
             {!token && (
-              <span className="navbar-text me-3">
-                <Button ariant="outlined" color="secondary">
-                  <Link to="/signin" className="logIn-btn text-white">
-                    LogIn
-                  </Link>
-                </Button>
-              </span>
+              <div>
+                <span className="navbar-text me-3">
+                  <Button ariant="outlined" color="secondary">
+                    <Link to="/signin" className="logIn-btn text-white">
+                      LogIn
+                    </Link>
+                  </Button>
+                </span>
+                <span className="navbar-text me-3">
+                  <Button ariant="outlined" color="secondary">
+                    <Link to="/register" className="logIn-btn text-white">
+                      Register Organization
+                    </Link>
+                  </Button>
+                </span>
+              </div>
             )}
           </div>
         </div>
