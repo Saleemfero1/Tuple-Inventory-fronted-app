@@ -42,6 +42,7 @@ export default function Navbar() {
               <ul className="navbar-nav mb-2 mb-lg-0 ">
                 <li className="nav-item">
                   <Link
+                    aria-expanded="false"
                     className="nav-link active"
                     aria-current="page"
                     to="/Sphinx-Inventory-fronted-app"
@@ -155,6 +156,15 @@ export default function Navbar() {
                     About Us
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    className="nav-link active"
+                    aria-current="page"
+                    to="register"
+                  >
+                    Register Organization
+                  </Link>
+                </li>
               </ul>
             )}
 
@@ -182,22 +192,13 @@ export default function Navbar() {
               </span>
             )}
             {!token && (
-              <div>
-                <span className="navbar-text me-3">
-                  <Button ariant="outlined" color="secondary">
-                    <Link to="/signin" className="logIn-btn text-white">
-                      LogIn
-                    </Link>
-                  </Button>
-                </span>
-                <span className="navbar-text me-3">
-                  <Button ariant="outlined" color="secondary">
-                    <Link to="/register" className="logIn-btn text-white">
-                      Register Organization
-                    </Link>
-                  </Button>
-                </span>
-              </div>
+              <span className="navbar-text me-3">
+                <Button ariant="outlined" color="secondary">
+                  <Link to="/signin" className="logIn-btn text-white">
+                    LogIn
+                  </Link>
+                </Button>
+              </span>
             )}
           </div>
         </div>

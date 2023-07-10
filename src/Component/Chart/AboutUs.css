@@ -12,8 +12,14 @@
 .text-name1{
     background-color: #efefef;
 }
+.row{
+  --bs-gutter-x: 0;
+}
 
-
+.flexClass{
+  display: flex;
+  flex-direction: row;
+}
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -23,8 +29,31 @@
   margin: 10px;
   padding: 20px;
 }
+.flex-grow-1{
+  margin-left: 30px;
+}
 @media (max-width: 1200px) {
     .flex-container {
       flex-direction: column;
     }
+    .user-image{
+      width: 180px; 
   }
+  }
+  @media (max-width: 400px) {
+    .flexClass{
+      display: flex;
+      flex-direction: column;
+    }
+    .user-image{
+      width: 100%; 
+      margin-bottom: 10px;
+  }
+  .flex-grow-1{
+    margin-left: 0px;
+  }
+  }
+  
+ 
+  
+  

@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 const ITEM_DETAILS_BASE_URL = "http://localhost:1111/item/";

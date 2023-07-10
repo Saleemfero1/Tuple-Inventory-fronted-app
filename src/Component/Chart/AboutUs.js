@@ -69,9 +69,9 @@ export default function AboutUs() {
           Thank you for choosing Sphinx Inventory
         </Typography>
       </Paper>
-      <div className=" row d-flex justify-content-around">
+      <div className=" container row d-flex justify-content-around">
         <h1 className="h1 text-center mt-5 ">Meet Our Team</h1>
-        <div className="col-lg-6 ">
+        <div className="col-lg-6">
           <ProfileUser
             name={"saleem"}
             about={"FullStack Developer"}

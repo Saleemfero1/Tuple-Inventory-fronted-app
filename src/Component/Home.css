@@ -1,12 +1,12 @@
-
 .set-img{
   background-image: url("../Component/images/bg2.jpg");
-  background-size:70%;
+  background-size:65%;
   background-position-x: right;
   background-position-y:bottom;
   background-repeat: no-repeat;
-  height: 90vh;
-  margin-left: 5%;
+  height: 80vh;
+  width: 100vw;
+
 }
 .from-right{
   width:36vw;
@@ -55,11 +55,12 @@
 
 @media screen and (max-width: 1111px) {
   .set-img{
+    margin-top: 20px;
     background-image:none;
     margin-left:0;
   }
   .from-right{
-    width:94vw;
+    width:90vw;
   }
 }
 
