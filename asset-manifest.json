@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Sphinx-Inventory-fronted-app/static/css/main.428b7d19.css",
-    "main.js": "/Sphinx-Inventory-fronted-app/static/js/main.c3f081e2.js",
+    "main.js": "/Sphinx-Inventory-fronted-app/static/js/main.83227f92.js",
     "static/js/787.718c5e08.chunk.js": "/Sphinx-Inventory-fronted-app/static/js/787.718c5e08.chunk.js",
     "static/media/bg2.jpg": "/Sphinx-Inventory-fronted-app/static/media/bg2.24075cf2d00aa27eb4e8.jpg",
     "static/media/saleem.jpeg": "/Sphinx-Inventory-fronted-app/static/media/saleem.3c740055bbe9c830527f.jpeg",
@@ -18,11 +18,11 @@
     "static/media/activeItem.png": "/Sphinx-Inventory-fronted-app/static/media/activeItem.7348ed835ebe1161426e.png",
     "index.html": "/Sphinx-Inventory-fronted-app/index.html",
     "main.428b7d19.css.map": "/Sphinx-Inventory-fronted-app/static/css/main.428b7d19.css.map",
-    "main.c3f081e2.js.map": "/Sphinx-Inventory-fronted-app/static/js/main.c3f081e2.js.map",
+    "main.83227f92.js.map": "/Sphinx-Inventory-fronted-app/static/js/main.83227f92.js.map",
     "787.718c5e08.chunk.js.map": "/Sphinx-Inventory-fronted-app/static/js/787.718c5e08.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.428b7d19.css",
-    "static/js/main.c3f081e2.js"
+    "static/js/main.83227f92.js"
   ]
 }
