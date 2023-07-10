@@ -5,6 +5,8 @@ import "./AboutUs.css";
 import ProfileUser from "./ProfileUser";
 import saleem from "../images/saleem.jpeg";
 import asim from "../images/asim.jpeg";
+import naveen from "../images/naveen.jpeg"
+import esha from "../images/esha.jpeg"
 import Footer from "../Footer/Footer";
 export default function AboutUs() {
   return (
@@ -95,7 +97,7 @@ export default function AboutUs() {
             about={"QA Engineer"}
             age={"21"}
             regNo={"20GACSD003"}
-            imageSrc={saleem}
+            imageSrc={naveen}
           />
         </div>
         <div className="col-lg-6 ">
@@ -104,7 +106,7 @@ export default function AboutUs() {
             about={"Content Writer"}
             age={"21"}
             regNo={"20GACSD001"}
-            imageSrc={saleem}
+            imageSrc={esha}
           />
         </div>
       </div>
