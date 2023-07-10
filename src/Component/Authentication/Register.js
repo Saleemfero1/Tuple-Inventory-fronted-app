@@ -5,7 +5,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -21,13 +20,14 @@ import { Alert } from "@mui/material";
 import bgImage from "../images/bg.jpg";
 import { Balance } from "@mui/icons-material";
 import "./signin.css";
+import { Link } from "react-router-dom";
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color=" #6a7ae4" align="center" {...props}>
       {"Copyright © "}
-      <Link color="inherit" href="http://localhost:3000/">
-        TupleInventory Management
+      <Link color="inherit" to="/">
+        SphinxInventory.com
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -241,7 +241,7 @@ export default function Register() {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                    <Link variant="body2" href="/signin" color={"#6a7ae4"}>
+                    <Link variant="body2" to="/signin" color={"#6a7ae4"}>
                       Already have an account? Sign in
                     </Link>
                   </Grid>

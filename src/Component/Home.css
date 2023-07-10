@@ -1,6 +1,6 @@
 .set-img{
   background-image: url("../Component/images/bg2.jpg");
-  background-size:65%;
+  background-size:70%;
   background-position-x: right;
   background-position-y:bottom;
   background-repeat: no-repeat;
@@ -36,7 +36,7 @@
 
 .home-buttons {
   margin-bottom: 20px;
-  width: 100%;
+  width: 90%;
   font-size: 20px;
   border-radius: 3px;
   background-color: rgb(252, 252, 254);
