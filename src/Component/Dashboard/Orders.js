@@ -82,9 +82,9 @@ export default function Orders() {
           <TableBody>
             {(rowsPerPage > 0
               ? dashData.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage
-                )
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+              )
               : dashData
             ).map((element) => (
               <StyledTableRow key={element.itemId}>

@@ -30,7 +30,7 @@ export default function DataLine() {
   const fetchData = () => {
     fetch(
       "http://localhost:1111/api/auth/sales/" +
-        sessionStorage.getItem("organizationId")
+      sessionStorage.getItem("organizationId")
     )
       .then((response) => response.json())
       .then((data) => {
@@ -75,8 +75,8 @@ export default function DataLine() {
   return (
     <div className="container  mt-5 p-5">
       <div className="row">
-        <div className="col-1"></div>
-        <div className="col-10">
+        <div className="col-md-1"></div>
+        <div className="col-md-10">
           <Line data={dataset} options={options} />
         </div>
       </div>

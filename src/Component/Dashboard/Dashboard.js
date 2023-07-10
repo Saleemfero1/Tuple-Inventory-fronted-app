@@ -120,9 +120,9 @@ export default function Dashboard() {
       imgSrc: Trend,
       itemData: TrendingItems.topTenItemsList
         ? Object.entries(TrendingItems.topTenItemsList).map(([key, value]) => ({
-            itemId: key,
-            quantity: value,
-          }))
+          itemId: key,
+          quantity: value,
+        }))
         : null,
       data: {
         labels: ["Rest Of Items", "Top Two Items"],
@@ -131,7 +131,7 @@ export default function Dashboard() {
             label: "Demand",
             data: [
               TrendingItems.getTotalDemandOfOtherItems -
-                TrendingItems.totalDemandOfTopTenItems,
+              TrendingItems.totalDemandOfTopTenItems,
               TrendingItems.totalDemandOfTopTenItems,
             ],
             backgroundColor: ["#0091ea", "	rgb(255, 192, 0)"],
@@ -213,62 +213,32 @@ export default function Dashboard() {
   );
 
   return (
-    <>
-      <Box sx={{ display: "flex" }}>
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            height: "100vh",
-          }}
-        >
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 5 }}>
-            <Grid container spacing={3}>
-              {/* details component*/}
-              {detailBoxes.map((detail) => (
-                <Grid item xs={12} md={6} lg={3}>
-                  <Paper
-                    sx={{
-                      backgroundColor: "",
-                      p: 2,
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                    className="shadow"
-                  >
-                    <Deposits
-                      heading1={detail.heading}
-                      heading2={detail.heading ? detail.heading1 : null}
-                      heading3={detail.heading2 ? detail.heading2 : null}
-                      num1={detail.num}
-                      num2={detail.num2 ? detail.num2 : null}
-                      num3={detail.num3 ? detail.num3 : null}
-                      link1={detail.link}
-                      link2={detail.link2 ? detail.link2 : null}
-                      data={detail.data}
-                      itemData={detail.itemData ? detail.itemData : null}
-                      imgSrc={detail.imgSrc ? detail.imgSrc : null}
-                      heading5={detail.heading5 ? detail.heading5 : null}
-                      heading6={detail.heading6 ? detail.heading6 : null}
-                      num5={detail.num5 ? detail.num5 : null}
-                    />
-                  </Paper>
-                </Grid>
-              ))}
+    <div className="conatiner my-5">
+      <div className="row justify-content-around mx-5">
+        {detailBoxes.map((detail) => (
+          <div className="col-md-half2 shadow p-3 mb-5"> <Deposits
+            heading1={detail.heading}
+            heading2={detail.heading ? detail.heading1 : null}
+            heading3={detail.heading2 ? detail.heading2 : null}
+            num1={detail.num}
+            num2={detail.num2 ? detail.num2 : null}
+            num3={detail.num3 ? detail.num3 : null}
+            link1={detail.link}
+            link2={detail.link2 ? detail.link2 : null}
+            data={detail.data}
+            itemData={detail.itemData ? detail.itemData : null}
+            imgSrc={detail.imgSrc ? detail.imgSrc : null}
+            heading5={detail.heading5 ? detail.heading5 : null}
+            heading6={detail.heading6 ? detail.heading6 : null}
+            num5={detail.num5 ? detail.num5 : null}
+          /></div>
+        ))}
+      </div>
+      <div className="container">
+        <Orders />
+      </div>
 
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
-                </Paper>
-              </Grid>
-            </Grid>
-            <Box>
-              <Footer></Footer>
-            </Box>
-          </Container>
-        </Box>
-      </Box>
-    </>
+    </div>
+
   );
 }

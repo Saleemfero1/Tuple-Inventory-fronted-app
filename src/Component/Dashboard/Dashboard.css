@@ -3,7 +3,19 @@
       height: 300px;
     }
   }
+.col-md-half2{
+  width:20%;
+  border-radius: 5px;
+}
 
+@media (max-width: 450px) {
+  .col-md-half2{
+    width:100%;
+  }
+}
+.overflow-x{
+  overflow-x: scroll;
+}
   /* .col-depo{
   padding:0;
   position: relative;
