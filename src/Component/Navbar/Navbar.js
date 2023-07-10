@@ -19,7 +19,7 @@ export default function Navbar() {
             className="navbar-brand ms-3 me-5"
             to={token ? "/dashboard" : "/"}
           >
-            <img src={Sphinx} alt="" width={50} className="me-2 imageSphinx" />
+            <img src={LogoImage} alt="" width={50} className="me-2" />
             <span className="firstLetter">S</span>phinx
             <span className="firstLetter"> I</span>nventory
           </Link>
