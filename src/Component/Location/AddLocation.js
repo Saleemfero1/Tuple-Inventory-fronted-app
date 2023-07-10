@@ -144,10 +144,10 @@ export default function AddLocation() {
   return (
     <>
       <ToastContainer position="bottom-left" />
-      <div className="container mt-5">
+      <div className="container my-5">
         <form className="mt-3 p-3 shadow addItems" onSubmit={saveLocation}>
-          <div className=" row mb-3">
-            <div className="form-group col-md-6">
+          <div className="row justify-content-around">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="LocationId">Location Id</label>
               <input
                 type="text"
@@ -159,7 +159,7 @@ export default function AddLocation() {
                 onChange={onChangeLocationId}
               />
             </div>
-            <div className="form-group col-md-6">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="Description">Description</label>
               <input
                 data-testid="Description"
@@ -173,8 +173,8 @@ export default function AddLocation() {
               />
             </div>
           </div>
-          <div className=" row mb-3">
-            <div className="form-group col-md-6">
+          <div className="row justify-content-around">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="locationType">Type</label>
               <input
                 type="text"
@@ -186,7 +186,7 @@ export default function AddLocation() {
                 onChange={onChangeLocationType}
               />
             </div>
-            <div className="form-group col-md-6">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="addressLine1">Address Line 1</label>
               <input
                 type="text"
@@ -200,8 +200,8 @@ export default function AddLocation() {
             </div>
           </div>
 
-          <div className=" row mb-3">
-            <div className="form-group col-md-6">
+          <div className="row justify-content-around">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="addressLine2">Address Line 2</label>
               <input
                 type="text"
@@ -213,7 +213,7 @@ export default function AddLocation() {
                 onChange={onChangeAddressLine2}
               />
             </div>
-            <div className="form-group col-md-6">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="addressLine3">Address Line 3</label>
               <input
                 type="text"
@@ -225,8 +225,8 @@ export default function AddLocation() {
               />
             </div>
           </div>
-          <div className="row mb-3">
-            <div className="form-group col-md-6">
+          <div className="row justify-content-around">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="Country">Country</label>
               <select
                 className="form-control "
@@ -243,7 +243,7 @@ export default function AddLocation() {
               </select>
             </div>
 
-            <div className="form-group col-md-6">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="Country">State</label>
               <select
                 className="form-control "
@@ -262,8 +262,8 @@ export default function AddLocation() {
             </div>
           </div>
 
-          <div className="row mb-3">
-            <div className="col-md-6">
+          <div className="row justify-content-around">
+            <div className="col-md-5 mb-3">
               <label htmlFor="city">City</label>
               <select
                 className="form-control"
@@ -282,7 +282,7 @@ export default function AddLocation() {
                   )}
               </select>
             </div>
-            <div className="form-group col-md-6">
+            <div className="form-group col-md-5 mb-3">
               <label htmlFor="pincode">Pin Code</label>
               <input
                 type="text"
@@ -296,61 +296,77 @@ export default function AddLocation() {
             </div>
           </div>
 
-          <div className="form-row row mt-3">
-            <div className="form-group col-md-3">
-              <label htmlFor="deliveryAllowed" className="me-4">
-                Delivery Allowed
-              </label>
-              <input
-                type="checkbox"
-                id="deliveryAllowed"
-                name="deliveryAllowed"
-                value={location.deliveryAllowed}
-                onChange={onChangeDelivery}
-              />
+          <div className="row justify-content-around">
+            <div className="col-md-6 ">
+              <div className="row justify-content-around">
+                <div className="col-md-4 form-group mb-3">
+                  <label htmlFor="deliveryAllowed" className="me-4">
+                    Delivery Allowed
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="deliveryAllowed"
+                    name="deliveryAllowed"
+                    value={location.deliveryAllowed}
+                    onChange={onChangeDelivery}
+                  />
+                </div>
+                <div className="col-md-4 mb-3">
+                  <label htmlFor="pickupAllowed" className="me-4">
+                    Pickup Allowed
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="pickupAllowed"
+                    name="pickupAllowed"
+                    value={location.pickupAllowed}
+                    onChange={onChangePickup}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="form-group col-md-3">
-              <label htmlFor="pickupAllowed" className="me-4">
-                Pickup Allowed
-              </label>
-              <input
-                type="checkbox"
-                id="pickupAllowed"
-                name="pickupAllowed"
-                value={location.pickupAllowed}
-                onChange={onChangePickup}
-              />
+            <div className="col-md-6 mb-3">
+              <div className="row justify-content-around">
+                <div className="col-md-4 form-group">
+                  <label htmlFor="shippingAllowed" className="me-4">
+                    Shipping Allowed
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="shippingAllowed"
+                    name="shippingAllowed"
+                    value={location.shippingAllowed}
+                    onChange={onChangeShipping}
+                  />
+                </div>
+                <div className="col-md-4 form-group"></div>
+              </div>
             </div>
-            <div className="form-group col-md-3">
-              <label htmlFor="shippingAllowed" className="me-4">
-                Shipping Allowed
-              </label>
-              <input
-                type="checkbox"
-                id="shippingAllowed"
-                name="shippingAllowed"
-                value={location.shippingAllowed}
-                onChange={onChangeShipping}
-              />
+          </div>
+          <div className="row justify-content-around">
+            <div className="col-md-5 mb-3">
+              <Button
+                variant="contained"
+                className="bg-info text-black"
+                type="submit"
+                sx={{ mt: 2 }}
+              >
+                {id === "-1" ? "Add Location" : "Update Location"}
+              </Button>
+              <Button
+                variant="contained"
+                color="error"
+                sx={{ ml: 2, mt: 2 }}
+                onClick={() => navigate("/location")}
+              >
+                Cancel
+              </Button>
+            </div>
+            <div className="col-md-5 mb-3">
+
             </div>
           </div>
 
-          <Button
-            variant="contained"
-            className="bg-info text-black"
-            type="submit"
-            sx={{ mt: 2 }}
-          >
-            {id === "-1" ? "Add Location" : "Update Location"}
-          </Button>
-          <Button
-            variant="contained"
-            color="error"
-            sx={{ ml: 2, mt: 2 }}
-            onClick={() => navigate("/location")}
-          >
-            Cancel
-          </Button>
         </form>
       </div>
     </>

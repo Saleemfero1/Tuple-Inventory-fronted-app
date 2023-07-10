@@ -132,10 +132,11 @@ export default function AddItemForm() {
   };
 
   return (
-    <div className="container mt-5" data-testid="add-item-form">
+    <div className="container my-5" data-testid="add-item-form">
+      <div className="h3"> {id == -1 ? "Add Item" : "Update Item"}</div>
       <form className="mt-3 p-3 shadow addItems" onSubmit={saveItem}>
-        <div className=" row mb-3">
-          <div className="form-group col-md-6">
+        <div className=" row justify-content-around">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="itemId">Item Id</label>
             <input
               type="text"
@@ -147,7 +148,7 @@ export default function AddItemForm() {
               required
             />
           </div>
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="itemName">Item Name</label>
             <input
               type="text"
@@ -161,12 +162,12 @@ export default function AddItemForm() {
           </div>
         </div>
 
-        <div className=" row">
-          <div className="form-group col-md-6">
+        <div className="row justify-content-around">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="itemDesc">Description</label>
             <input
               type="text"
-              className="form-control mb-3"
+              className="form-control"
               id="itemDesc"
               placeholder="Enter Item Description"
               value={item.itemDescription}
@@ -174,11 +175,11 @@ export default function AddItemForm() {
               required
             />
           </div>
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="Category">Category</label>
             <input
               type="text"
-              className="form-control  mb-3"
+              className="form-control"
               id="Category"
               placeholder="Enter Category"
               value={item.category}
@@ -188,12 +189,12 @@ export default function AddItemForm() {
           </div>
         </div>
 
-        <div className=" row">
-          <div className="form-group col-md-6">
+        <div className="row justify-content-around">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="itemType">Type</label>
             <input
               type="text"
-              className="form-control  mb-3"
+              className="form-control"
               id="itemType"
               placeholder="Enter Item Type"
               value={item.type}
@@ -201,11 +202,11 @@ export default function AddItemForm() {
               required
             />
           </div>
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="Price">Price</label>
             <input
               type="text"
-              className="form-control  mb-3"
+              className="form-control"
               id="Price"
               placeholder="Enter Price"
               value={item.price}
@@ -214,74 +215,88 @@ export default function AddItemForm() {
             />
           </div>
         </div>
-
-        <div className="form-row row mt-3">
-          <div className="col-md-3 ">
-            <select
-              className="form-select  mb-3"
-              aria-label="Default select example"
-              value={item.itemstatus}
-              onChange={onChangeStatus}
-              required
+        <div className="row justify-content-around ">
+          <div className="col-md-6 ">
+            <div className="row justify-content-around ">
+              <div className="col-md-4">
+                <select
+                  className="form-select  mb-3"
+                  aria-label="Default select example"
+                  value={item.itemstatus}
+                  onChange={onChangeStatus}
+                  required
+                >
+                  <option>Select Item Status</option>
+                  <option value={true}>active</option>
+                  <option value={false}>inactive</option>
+                </select>
+              </div>
+              <div className=" form-group col-md-4">
+                <label htmlFor="deliveryAllowed" className="me-4">
+                  Delivery Allowed
+                </label>
+                <input
+                  type="checkbox"
+                  id="deliveryAllowed"
+                  name="deliveryAllowed"
+                  onChange={onChangeDelivery}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6 ">
+            <div className="row justify-content-around ">
+              <div className="form-group  col-md-4">
+                <label htmlFor="pickupAllowed" className="me-4">
+                  Pickup Allowed
+                </label>
+                <input
+                  placeholder="pickup"
+                  type="checkbox"
+                  id="pickupAllowed"
+                  name="pickupAllowed"
+                  onChange={onChangePickup}
+                />
+              </div>
+              <div className="form-group col-md-4">
+                <label htmlFor="shippingAllowed" className="me-4">
+                  Shipping Allowed
+                </label>
+                <input
+                  type="checkbox"
+                  id="shippingAllowed"
+                  name="shippingAllowed"
+                  defaultChecked={item.shippingAllowed}
+                  onChange={onChangeShipping}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row justify-content-around">
+          <div className="col-md-5  mb-3">
+            <Button
+              variant="contained"
+              className="bg-info text-black"
+              type="submit"
+              sx={{ mt: 2 }}
             >
-              <option>Select Item Status</option>
-              <option value={true}>active</option>
-              <option value={false}>inactive</option>
-            </select>
+              {id == -1 ? "Add Item" : "Update Item"}
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              sx={{ ml: 2, mt: 2 }}
+              onClick={() => navigate("/item")}
+            >
+              Cancel
+            </Button>
           </div>
-          <div className="form-group col-md-3 mt-1">
-            <label htmlFor="deliveryAllowed" className="me-4">
-              Delivery Allowed
-            </label>
-            <input
-              type="checkbox"
-              id="deliveryAllowed"
-              name="deliveryAllowed"
-              onChange={onChangeDelivery}
-            />
-          </div>
-          <div className="form-group col-md-3 mt-1">
-            <label htmlFor="pickupAllowed" className="me-4">
-              Pickup Allowed
-            </label>
-            <input
-              placeholder="pickup"
-              type="checkbox"
-              id="pickupAllowed"
-              name="pickupAllowed"
-              onChange={onChangePickup}
-            />
-          </div>
-          <div className="form-group col-md-3 mt-1">
-            <label htmlFor="shippingAllowed" className="me-4">
-              Shipping Allowed
-            </label>
-            <input
-              type="checkbox"
-              id="shippingAllowed"
-              name="shippingAllowed"
-              defaultChecked={item.shippingAllowed}
-              onChange={onChangeShipping}
-            />
+          <div className="col-md-5  mb-3">
+
           </div>
         </div>
 
-        <Button
-          variant="contained"
-          className="bg-info text-black"
-          type="submit"
-          sx={{ mt: 2 }}
-        >
-          {id == -1 ? "Add Item" : "Update Item"}
-        </Button>
-        <Button
-          variant="contained"
-          color="error"
-          sx={{ ml: 2, mt: 2 }}
-          onClick={() => navigate("/item")}
-        >
-          Cancel
-        </Button>
       </form>
     </div>
   );

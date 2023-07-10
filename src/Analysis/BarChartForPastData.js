@@ -40,7 +40,7 @@ export default function BarCharData(props) {
 
   console.log(props.data);
   return (
-    <div className="container mt-3 col-6">
+    <div className="container mt-3  col-md-6 ">
       <Bar data={data} />
     </div>
   );

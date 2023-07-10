@@ -74,7 +74,7 @@ export default function Items(props) {
 
   return (
     <div className="container">
-      <div className=" mt-3">
+      <div className="my-3">
         <h3 variant="h3" className="text-center">
           Items Details
         </h3>

@@ -132,13 +132,16 @@ export default function AddDemand() {
   return (
     <div className="container mt-5">
       <ToastContainer position="bottom-left" />
+      <div className="h3">
+        {id == -1 ? "Add Demand" : "Upadte Demand"}
+      </div>
       <form
         className="mt-3 p-3 shadow addItems"
         onSubmit={saveDemand}
         data-testid="add-demand-form"
       >
-        <div className=" row mb-3 ">
-          <div className="form-group col-md-6">
+        <div className=" row justify-content-around ">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="itemId" data-testid="itemId">
               Select Item
             </label>
@@ -149,7 +152,7 @@ export default function AddDemand() {
               onChange={onChangeItemId}
             ></Select>
           </div>
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="LocationId" data-testid="locationId">
               Location Id
             </label>
@@ -162,8 +165,8 @@ export default function AddDemand() {
           </div>
         </div>
 
-        <div className=" row">
-          <div className="form-group col-md-6">
+        <div className="row justify-content-around">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="demandType" data-testid="demandType">
               Demand Type
             </label>
@@ -181,7 +184,7 @@ export default function AddDemand() {
             </select>
           </div>
 
-          <div className="form-group col-md-6">
+          <div className="form-group col-md-5 mb-3">
             <label htmlFor="Quantity" data-testid="Quantity">
               Quantity
             </label>
@@ -196,23 +199,30 @@ export default function AddDemand() {
             />
           </div>
         </div>
+        <div className="row justify-content-around">
+          <div className="col-md-5 mb-3">
+            <Button
+              variant="contained"
+              className="bg-info text-black"
+              type="submit"
+              sx={{ mt: 2 }}
+            >
+              {id == -1 ? "Add Demand" : "Upadte Demand"}
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              sx={{ ml: 2, mt: 2 }}
+              onClick={() => navigate("/demand")}
+            >
+              Cancel
+            </Button>
+          </div>
+          <div className="col-md-5 mb-3">
 
-        <Button
-          variant="contained"
-          className="bg-info text-black"
-          type="submit"
-          sx={{ mt: 2 }}
-        >
-          {id == -1 ? "Add Demand" : "Upadte Demand"}
-        </Button>
-        <Button
-          variant="contained"
-          color="error"
-          sx={{ ml: 2, mt: 2 }}
-          onClick={() => navigate("/demand")}
-        >
-          Cancel
-        </Button>
+          </div>
+        </div>
+
       </form>
     </div>
   );

@@ -47,9 +47,9 @@ export default function RegionBasedData() {
   const fetchData = () => {
     fetch(
       "http://localhost:1111/demand/region/" +
-        sessionStorage.getItem("organizationId") +
-        "/" +
-        location["value"],
+      sessionStorage.getItem("organizationId") +
+      "/" +
+      location["value"],
       {
         headers: {
           Authorization: `Bearer ` + sessionStorage.getItem("token"),
@@ -67,9 +67,9 @@ export default function RegionBasedData() {
   return (
     <div>
       <div className="container">
-        <h1 className="h3 mt-5">Region Based Data</h1>
-        <div className="row">
-          <div class="form-group col-md-6">
+        <h1 className="h3 my-5">Region Based Data</h1>
+        <div className="row justify-content-around ">
+          <div class="form-group col-md-5 mb-3">
             <label for="LocationId">Location Id</label>
             <Select
               placeholder={"Search Demand By location"}
@@ -78,7 +78,7 @@ export default function RegionBasedData() {
               onChange={onChangeLocationId}
             ></Select>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5 mb-3">
             <label for="LocationId">Supply / Demand</label>
             <Select
               placeholder={choice}

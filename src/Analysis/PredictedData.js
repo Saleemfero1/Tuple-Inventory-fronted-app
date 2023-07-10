@@ -13,7 +13,7 @@ export default function PredictedData() {
   const fetchData = () => {
     fetch(
       "http://localhost:1111/api/auth/sales/" +
-        sessionStorage.getItem("organizationId")
+      sessionStorage.getItem("organizationId")
     )
       .then((response) => response.json())
       .then((data) => {
@@ -29,8 +29,8 @@ export default function PredictedData() {
         <h1 className="h3 mt-5">Next weeks Analysis</h1>
       </div>
       <div className="row mb-5">
-        <div className="col-2"></div>
-        <div className="col-8">
+        <div className="col-md-2"></div>
+        <div className="col-md-8">
           <BarCharData data={data} label={"Next week predicted sale"} />
         </div>
       </div>

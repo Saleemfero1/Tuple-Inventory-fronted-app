@@ -135,10 +135,11 @@ export default function AddThreshold() {
   }));
   return (
     <div className="container mt-5">
+      <div className="h3">{id == -1 ? "Add Threshold" : "Update Threshold"}</div>
       <ToastContainer position="bottom-left" />
       <form className="mt-3 p-3 shadow addItems" onSubmit={saveThreshold}>
-        <div class=" row mb-3">
-          <div class="form-group col-md-6">
+        <div class="row justify-content-around">
+          <div class="form-group col-md-5 mb-3">
             <label htmlFor="itemId">Select Item</label>
             <Select
               id="itemId"
@@ -148,7 +149,7 @@ export default function AddThreshold() {
               onChange={onChangeItemId}
             ></Select>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5 mb-3">
             <label htmlFor="LocationId">Location Id</label>
             <Select
               id="LocationId"
@@ -159,8 +160,8 @@ export default function AddThreshold() {
             ></Select>
           </div>
         </div>
-        <div className="row">
-          <div class="form-group col-md-6">
+        <div className="row justify-content-around">
+          <div class="form-group col-md-5 mb-3">
             <label htmlFor="minThreshold">Minimum Threshold</label>
             <input
               type="text"
@@ -171,7 +172,7 @@ export default function AddThreshold() {
               onChange={onChangeMinThreshold}
             />
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5 mb-3">
             <label htmlFor="maxThreshold">Maximum Threshold</label>
             <input
               type="text"
@@ -183,23 +184,31 @@ export default function AddThreshold() {
             />
           </div>
         </div>
+        <div className="row justify-content-around">
+          <div className="col-md-5 mb-3">
+            <Button
+              variant="contained"
+              className="bg-info text-black"
+              type="submit"
+              sx={{ mt: 2 }}
+            >
+              {id == -1 ? "Add Threshold" : "Update Threshold"}
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              sx={{ ml: 2, mt: 2 }}
+              onClick={() => navigate("/threshold")}
+            >
+              Cancel
+            </Button>
+          </div>
+          <div className="col-md-5 mb-3">
 
-        <Button
-          variant="contained"
-          className="bg-info text-black"
-          type="submit"
-          sx={{ mt: 2 }}
-        >
-          {id == -1 ? "Add Threshold" : "Update Threshold"}
-        </Button>
-        <Button
-          variant="contained"
-          color="error"
-          sx={{ ml: 2, mt: 2 }}
-          onClick={() => navigate("/threshold")}
-        >
-          Cancel
-        </Button>
+          </div>
+        </div>
+
+
       </form>
     </div>
   );

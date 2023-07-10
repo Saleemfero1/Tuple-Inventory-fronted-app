@@ -26,6 +26,7 @@ import PredictedData from "./Analysis/PredictedData";
 import PastData from "./Analysis/PastData";
 import DataLine from "./Analysis/DataLine";
 import RegionBasedData from "./Analysis/RegionBasedDemand";
+import Footer from "./Component/Footer/Footer";
 function App() {
   return (
     <div>
@@ -222,6 +223,7 @@ function App() {
 
         <Route exact path="/chart" element={<ChartData />} />
       </Routes>
+
     </div>
   );
 }

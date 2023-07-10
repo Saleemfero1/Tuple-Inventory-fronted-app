@@ -9,7 +9,6 @@ import { AuthContext } from "../../TokenDetails/AuthContext";
 import Select from "react-select";
 import { Button } from "@mui/material";
 
-
 export default function AddSupply() {
   const { token } = useContext(AuthContext);
   const queryParameters = new URLSearchParams(window.location.search);
@@ -128,14 +127,15 @@ export default function AddSupply() {
   const supplyTypes = ["ONHAND", "INTRANSIT", "DAMAGED"];
   return (
     <div className="container mt-5">
+      <div className="h4">{id == -1 ? "Create Supply" : "Update Supply"}</div>
       <ToastContainer position="bottom-left" />
       <form
         className="mt-3 p-3 shadow addItems"
         onSubmit={saveSupply}
         data-testid="add-supply-form"
       >
-        <div class=" row mb-3">
-          <div class="form-group col-md-6">
+        <div class=" row  justify-content-around">
+          <div class="form-group col-md-5 mb-3">
             <label for="itemId">Select Item</label>
             <Select
               data-testid="selectItem"
@@ -145,7 +145,7 @@ export default function AddSupply() {
               onChange={onChangeItemId}
             ></Select>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5 mb-3">
             <label for="LocationId">Location Id</label>
             <Select
               data-testid="selectLocation"
@@ -157,8 +157,8 @@ export default function AddSupply() {
           </div>
         </div>
 
-        <div class=" row">
-          <div class="form-group col-md-6">
+        <div class=" row justify-content-around">
+          <div class="form-group col-md-5 mb-3">
             <label for="supplyType">Supply Type</label>
             <select
               class="form-select "
@@ -174,7 +174,7 @@ export default function AddSupply() {
             </select>
           </div>
 
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5 mb-3">
             <label for="Quantity">Quantity</label>
             <input
               type="text"
@@ -187,23 +187,27 @@ export default function AddSupply() {
             />
           </div>
         </div>
-
-        <Button
-          variant="contained"
-          className="bg-info text-black"
-          type="submit"
-          sx={{ mt: 2 }}
-        >
-          {id == -1 ? "Add Supply" : "Update Supply"}
-        </Button>
-        <Button
-          variant="contained"
-          color="error"
-          sx={{ ml: 2, mt: 2 }}
-          onClick={() => navigate("/supply")}
-        >
-          Cancel
-        </Button>
+        <div class=" row justify-content-around">
+          <div class="form-group col-md-5 mb-3 ">
+            <Button
+              variant="contained"
+              className="bg-info text-black"
+              type="submit"
+              sx={{ mt: 2 }}
+            >
+              {id == -1 ? "Add Supply" : "Update Supply"}
+            </Button>
+            <Button
+              variant="contained"
+              color="error"
+              sx={{ ml: 2, mt: 2 }}
+              onClick={() => navigate("/supply")}
+            >
+              Cancel
+            </Button>
+          </div>
+          <div className="form-group col-md-5"></div>
+        </div>
       </form>
     </div>
   );

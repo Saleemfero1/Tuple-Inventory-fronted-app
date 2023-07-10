@@ -13,7 +13,7 @@ export default function PastData() {
   const fetchData = () => {
     fetch(
       "http://localhost:1111/api/auth/sales/" +
-        sessionStorage.getItem("organizationId")
+      sessionStorage.getItem("organizationId")
     )
       .then((response) => response.json())
       .then((data) => {
@@ -29,8 +29,8 @@ export default function PastData() {
         <h1 className="h3 mt-5">Last 4 weeks Analysis</h1>
       </div>
       <div className="row mb-5">
-        <div className="col-2"></div>
-        <div className="col-8">
+        <div className="col-md-2"></div>
+        <div className="col-md-8">
           <BarCharData data={data} label={"Last 4 week sale"} />
         </div>
       </div>
